@@ -1,0 +1,61 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --bg-primary: #0A0A12;
+    --bg-secondary: #12121F;
+    --bg-surface: #1C1C2E;
+    --bg-border: #2A2A45;
+    
+    --accent-purple: #7C3AED;
+    --accent-purple-light: #A855F7;
+    --accent-cyan: #06B6D4;
+    --accent-green: #10B981;
+    --accent-red: #EF4444;
+    --accent-amber: #F59E0B;
+    
+    --text-primary: #F1F5F9;
+    --text-secondary: #94A3B8;
+    --text-code: #E2E8F0;
+  }
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+}
+
+/* React Flow custom styles */
+.react-flow__renderer {
+  background-color: var(--bg-primary) !important;
+}
+
+.react-flow__node {
+  border-radius: 8px !important;
+  color: var(--text-primary) !important;
+}
+
+/* Scrollbar customizations */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--bg-border);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-purple);
+}
