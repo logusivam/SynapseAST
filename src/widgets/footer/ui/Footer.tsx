@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 export const Footer: React.FC = () => {
-  const [isContactOpen, setIsContactOpen] = useState(false);
+  const [activeModal, setActiveModal] = useState<'contact' | 'privacy' | 'terms' | null>(null);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
@@ -9,6 +9,10 @@ export const Footer: React.FC = () => {
   // Validation states
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [isSubmitted, setIsSubmitted] = useState(false);
+
+  // Dynamic copyright years
+  const currentYear = new Date().getFullYear();
+  const nextYear = currentYear + 1;
 
   const validate = () => {
     const newErrors: Record<string, string> = {};
@@ -37,7 +41,6 @@ export const Footer: React.FC = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (validate()) {
-      // Mock submit action
       setIsSubmitted(true);
       setTimeout(() => {
         setName('');
@@ -45,7 +48,7 @@ export const Footer: React.FC = () => {
         setMessage('');
         setErrors({});
         setIsSubmitted(false);
-        setIsContactOpen(false);
+        setActiveModal(null);
         alert('Thank you! Your message has been sent.');
       }, 1000);
     }
@@ -58,24 +61,27 @@ export const Footer: React.FC = () => {
         <div className="flex flex-col items-center md:items-start gap-1">
           <span className="font-bold text-white tracking-wide">logusivam vision</span>
           <span className="text-xs text-[#94A3B8]">Built by Loganathan G P</span>
+          <span className="text-[11px] text-[#94A3B8] mt-1">
+            &copy; {currentYear} - {nextYear} SynapseAST. All rights reserved.
+          </span>
         </div>
 
         {/* Links & Contact */}
         <div className="flex flex-wrap justify-center gap-6">
           <button 
-            onClick={() => alert('Privacy Policy: All parsed code remains client-side and is never sent to any server.')}
+            onClick={() => setActiveModal('privacy')}
             className="hover:text-white transition-colors cursor-pointer"
           >
             Privacy Policy
           </button>
           <button 
-            onClick={() => alert('Terms of Service: This product is licensed under the MIT License.')}
+            onClick={() => setActiveModal('terms')}
             className="hover:text-white transition-colors cursor-pointer"
           >
             Terms of Service
           </button>
           <button 
-            onClick={() => setIsContactOpen(true)}
+            onClick={() => setActiveModal('contact')}
             className="text-[#7C3AED] hover:text-[#A855F7] font-semibold transition-colors cursor-pointer"
           >
             Contact Us
@@ -83,18 +89,69 @@ export const Footer: React.FC = () => {
         </div>
       </div>
 
-      {/* Contact Popover Modal */}
-      {isContactOpen && (
+      {/* Privacy Policy Popover Modal */}
+      {activeModal === 'privacy' && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4">
-          <div 
-            className="bg-[#12121F] border border-[#2A2A45] w-full max-w-md rounded-xl p-6 shadow-2xl relative flex flex-col gap-4 animate-in fade-in zoom-in-95 duration-150"
-          >
-            {/* Header */}
+          <div className="bg-[#12121F] border border-[#2A2A45] w-full max-w-lg rounded-xl p-6 shadow-2xl relative flex flex-col gap-4 animate-in fade-in zoom-in-95 duration-150 text-left">
+            <div className="flex items-center justify-between border-b border-[#2A2A45] pb-3">
+              <h3 className="text-lg font-bold text-white">Privacy Policy</h3>
+              <button onClick={() => setActiveModal(null)} className="text-[#94A3B8] hover:text-white cursor-pointer">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+                </svg>
+              </button>
+            </div>
+            <div className="text-sm text-[#94A3B8] flex flex-col gap-3 max-h-[300px] overflow-y-auto pr-1">
+              <p className="text-white font-semibold">1. Client-Side Only Parsing</p>
+              <p>SynapseAST is designed as a browser-only, zero-backend studio. Every keystroke is parsed locally inside your browser using @babel/parser. Your source code never leaves your computer and is never sent to any server.</p>
+              <p className="text-white font-semibold">2. Local Storage & Sharing</p>
+              <p>When you use the "Share" feature, your code is encoded in Base64 and appended to the URL hash. This configuration is stored exclusively in your browser history and is only shared when you explicitly copy and send the link to others.</p>
+              <p className="text-white font-semibold">3. Third-party Libraries</p>
+              <p>We bundle standard packages (like Monaco Editor and React Flow) locally. No external analytics, tracking pixels, or cookie monitors are integrated.</p>
+            </div>
+            <button onClick={() => setActiveModal(null)} className="bg-[#7C3AED] hover:bg-[#A855F7] text-white text-sm font-bold py-2 rounded-lg mt-2 cursor-pointer">
+              Close
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* Terms of Service Popover Modal */}
+      {activeModal === 'terms' && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4">
+          <div className="bg-[#12121F] border border-[#2A2A45] w-full max-w-lg rounded-xl p-6 shadow-2xl relative flex flex-col gap-4 animate-in fade-in zoom-in-95 duration-150 text-left">
+            <div className="flex items-center justify-between border-b border-[#2A2A45] pb-3">
+              <h3 className="text-lg font-bold text-white">Terms of Service</h3>
+              <button onClick={() => setActiveModal(null)} className="text-[#94A3B8] hover:text-white cursor-pointer">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+                </svg>
+              </button>
+            </div>
+            <div className="text-sm text-[#94A3B8] flex flex-col gap-3 max-h-[300px] overflow-y-auto pr-1">
+              <p className="text-white font-semibold">1. License</p>
+              <p>SynapseAST is licensed under the MIT License. You are free to copy, modify, distribute, and execute the code for personal or commercial projects.</p>
+              <p className="text-white font-semibold">2. Disclaimer of Warranties</p>
+              <p>The software is provided "as is", without warranty of any kind, express or implied, including but not limited to the warranties of merchantability, fitness for a particular purpose, and noninfringement.</p>
+              <p className="text-white font-semibold">3. Use Guidelines</p>
+              <p>You agree not to use SynapseAST to generate or compile malicious scripts. This tool is designed strictly for compilation analysis, educational visuals, and dev tooling.</p>
+            </div>
+            <button onClick={() => setActiveModal(null)} className="bg-[#7C3AED] hover:bg-[#A855F7] text-white text-sm font-bold py-2 rounded-lg mt-2 cursor-pointer">
+              Close
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* Contact Popover Modal */}
+      {activeModal === 'contact' && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4">
+          <div className="bg-[#12121F] border border-[#2A2A45] w-full max-w-md rounded-xl p-6 shadow-2xl relative flex flex-col gap-4 animate-in fade-in zoom-in-95 duration-150 text-left">
             <div className="flex items-center justify-between border-b border-[#2A2A45] pb-3">
               <h3 className="text-lg font-bold text-white">Contact Us</h3>
               <button 
                 onClick={() => {
-                  setIsContactOpen(false);
+                  setActiveModal(null);
                   setErrors({});
                 }}
                 className="text-[#94A3B8] hover:text-white cursor-pointer"
@@ -105,9 +162,7 @@ export const Footer: React.FC = () => {
               </button>
             </div>
 
-            {/* Form */}
             <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-              {/* Name */}
               <div className="flex flex-col gap-1">
                 <div className="flex justify-between items-center">
                   <label className="text-xs font-semibold text-[#94A3B8]">Name</label>
@@ -124,7 +179,6 @@ export const Footer: React.FC = () => {
                 {errors.name && <span className="text-[10px] text-[#EF4444]">{errors.name}</span>}
               </div>
 
-              {/* Email */}
               <div className="flex flex-col gap-1">
                 <label className="text-xs font-semibold text-[#94A3B8]">Email</label>
                 <input
@@ -137,7 +191,6 @@ export const Footer: React.FC = () => {
                 {errors.email && <span className="text-[10px] text-[#EF4444]">{errors.email}</span>}
               </div>
 
-              {/* Message */}
               <div className="flex flex-col gap-1">
                 <div className="flex justify-between items-center">
                   <label className="text-xs font-semibold text-[#94A3B8]">Message</label>
@@ -154,7 +207,6 @@ export const Footer: React.FC = () => {
                 {errors.message && <span className="text-[10px] text-[#EF4444]">{errors.message}</span>}
               </div>
 
-              {/* Submit */}
               <button
                 type="submit"
                 disabled={isSubmitted}
