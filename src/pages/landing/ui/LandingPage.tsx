@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Header } from '@/widgets/header/ui/Header';
+import { Footer } from '@/widgets/footer/ui/Footer';
 
 export const LandingPage: React.FC = () => {
   const containerVariants = {
@@ -66,10 +67,6 @@ export const LandingPage: React.FC = () => {
       title: 'Understand ESLint Rules',
       desc: 'See node visitors, declarations, expressions, and structures so you can write custom lint regulations faster.',
     },
-  ];
-
-  const techBadges = [
-    'React 18', 'TypeScript', 'Babel Parser', 'React Flow', 'Framer Motion', 'Dagre Layout', 'Tailwind CSS', 'Vite'
   ];
 
   return (
@@ -212,31 +209,9 @@ export const LandingPage: React.FC = () => {
             ))}
           </div>
         </section>
-
-        {/* Tech Stackbadges */}
-        <section className="py-16 w-full border-t border-[#2A2A45]/30">
-          <span className="text-xs text-[#94A3B8] font-bold uppercase tracking-wider block mb-8">Powering the Experience</span>
-          <div className="flex flex-wrap gap-3 justify-center">
-            {techBadges.map((badge) => (
-              <span key={badge} className="px-4 py-2 bg-[#1C1C2E] text-white border border-[#2A2A45] text-xs font-semibold rounded-full hover:border-[#7C3AED] transition-colors cursor-default">
-                {badge}
-              </span>
-            ))}
-          </div>
-        </section>
       </main>
 
-      {/* Footer */}
-      <footer className="border-t border-[#2A2A45] py-8 bg-[#0A0A12] relative z-10">
-        <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-[#94A3B8]">
-          <div>Built by Antigravity IDE &copy; 2026. All rights reserved.</div>
-          <div className="flex gap-6">
-            <a href="#" className="hover:text-white transition-colors">GitHub</a>
-            <a href="#" className="hover:text-white transition-colors">MIT License</a>
-            <a href="#" className="hover:text-white transition-colors">Docs</a>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 };

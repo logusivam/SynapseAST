@@ -2,6 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useWorkspaceStore } from '@/entities/workspace/model/store';
 import { Header } from '@/widgets/header/ui/Header';
+import { Footer } from '@/widgets/footer/ui/Footer';
 
 interface ExampleItem {
   id: string;
@@ -59,6 +60,20 @@ export const ExamplesPage: React.FC = () => {
       language: 'typescript',
       code: `interface User { id: number; name: string; roles: string[] }\nconst user: User = { id: 1, name: 'Alice', roles: ['admin'] };\nconst { name, roles: [primaryRole] } = user;`,
     },
+    {
+      id: 'jsx-counter',
+      title: 'React JSX Counter',
+      category: 'Expression',
+      language: 'jsx',
+      code: `export default function Counter() {\n  const [count, setCount] = useState(0);\n  return (\n    <div className="flex gap-2">\n      <button onClick={() => setCount(count - 1)}>-</button>\n      <span>{count}</span>\n      <button onClick={() => setCount(count + 1)}>+</button>\n    </div>\n  );\n}`,
+    },
+    {
+      id: 'optional-chaining',
+      title: 'Optional Chaining (TS)',
+      category: 'Expression',
+      language: 'typescript',
+      code: `interface Config { api?: { host: string; port?: number } }\nconst config: Config = {};\nconst port = config.api?.port ?? 8080;\nconsole.log(port);`,
+    },
   ];
 
   const handleLoadExample = (example: ExampleItem) => {
@@ -81,7 +96,7 @@ export const ExamplesPage: React.FC = () => {
         </div>
 
         {/* Card Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
           {examples.map((ex) => (
             <div
               key={ex.id}
@@ -96,10 +111,10 @@ export const ExamplesPage: React.FC = () => {
               {/* Detail block */}
               <div className="p-5 flex flex-col gap-4">
                 <div className="flex items-center justify-between">
-                  <h3 className="font-bold text-base text-white group-hover:text-[#7C3AED] transition-colors">
+                  <h3 className="font-bold text-base text-white group-hover:text-[#7C3AED] transition-colors truncate pr-2" title={ex.title}>
                     {ex.title}
                   </h3>
-                  <span className={`text-[10px] font-semibold px-2 py-0.5 rounded-full uppercase tracking-wider ${
+                  <span className={`text-[10px] font-semibold px-2 py-0.5 rounded-full uppercase tracking-wider flex-shrink-0 ${
                     ex.category === 'Declaration' 
                       ? 'bg-[#7C3AED]/20 text-[#A855F7] border border-[#7C3AED]/30'
                       : ex.category === 'Expression'
@@ -124,7 +139,7 @@ export const ExamplesPage: React.FC = () => {
         {/* Bottom banner */}
         <div 
           onClick={() => navigate('/editor')}
-          className="bg-[#1C1C2E] border border-[#2A2A45] p-6 rounded-xl flex items-center justify-between hover:border-[#7C3AED] cursor-pointer transition-colors"
+          className="bg-[#1C1C2E] border border-[#2A2A45] p-6 rounded-xl flex items-center justify-between hover:border-[#7C3AED] cursor-pointer transition-colors mb-12"
         >
           <div className="flex flex-col gap-1">
             <h4 className="text-white font-bold text-lg">Ready to write your own?</h4>
@@ -138,6 +153,8 @@ export const ExamplesPage: React.FC = () => {
           </span>
         </div>
       </main>
+
+      <Footer />
     </div>
   );
 };
