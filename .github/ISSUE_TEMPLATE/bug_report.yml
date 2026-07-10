@@ -1,0 +1,30 @@
+name: Bug Report
+description: Create a report to help us improve SynapseAST
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: Thank you for reporting a bug! Please fill out the details below.
+  - type: textarea
+    id: describe-bug
+    attributes:
+      label: Describe the Bug
+      placeholder: Describe what happens and what you expected to happen instead.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction-steps
+    attributes:
+      label: Steps to Reproduce
+      placeholder: |
+        1. Go to editor page
+        2. Paste this code: ...
+        3. Click node ...
+        4. See error ...
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Environment Info
+      placeholder: Browser, OS, SynapseAST version ...

@@ -1,0 +1,34 @@
+name: CI
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install Dependencies
+        run: npm ci --legacy-peer-deps
+
+      - name: Code Formatting Check
+        run: npx prettier --check .
+
+      - name: Lint Analysis
+        run: npm run lint
+
+      - name: TypeScript Compile Check
+        run: npx tsc --noEmit
+
+      - name: Run Unit Tests
+        run: npm run test --run

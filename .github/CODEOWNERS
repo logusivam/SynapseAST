@@ -1,0 +1,13 @@
+# Global owners
+* @logusivam
+
+# CI/CD Workflows
+/.github/workflows/ @logusivam
+
+# Parsing & Diffing engines
+/src/features/ast-parse/ @logusivam
+/src/features/ast-diff/ @logusivam
+
+# Styling and assets
+/src/app/styles/ @logusivam
+/tailwind.config.js @logusivam

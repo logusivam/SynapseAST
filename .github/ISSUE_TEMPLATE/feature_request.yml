@@ -1,0 +1,26 @@
+name: Feature Request
+description: Propose a new feature or improvement for SynapseAST
+labels: [enhancement]
+body:
+  - type: markdown
+    attributes:
+      value: Have an idea for a feature? We want to hear it!
+  - type: textarea
+    id: problem-description
+    attributes:
+      label: Is your feature request related to a problem?
+      placeholder: Describe the problem or use-case you are trying to solve.
+    validations:
+      required: true
+  - type: textarea
+    id: solution-description
+    attributes:
+      label: Describe the Solution
+      placeholder: Tell us about your proposed solution or feature behavior.
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives Considered
+      placeholder: Describe any alternative workflows or workarounds you've thought about.
