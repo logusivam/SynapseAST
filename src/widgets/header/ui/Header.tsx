@@ -42,20 +42,56 @@ export const Header: React.FC = () => {
 
   // Icons for navigation links
   const editorIcon = (
-    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/><line x1="12" y1="2" x2="12" y2="22"/>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    >
+      <polyline points="16 18 22 12 16 6" />
+      <polyline points="8 6 2 12 8 18" />
+      <line x1="12" y1="2" x2="12" y2="22" />
     </svg>
   );
 
   const examplesIcon = (
-    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <rect x="3" y="3" width="7" height="9" rx="1"/><rect x="14" y="3" width="7" height="5" rx="1"/><rect x="14" y="12" width="7" height="9" rx="1"/><rect x="3" y="16" width="7" height="5" rx="1"/>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    >
+      <rect x="3" y="3" width="7" height="9" rx="1" />
+      <rect x="14" y="3" width="7" height="5" rx="1" />
+      <rect x="14" y="12" width="7" height="9" rx="1" />
+      <rect x="3" y="16" width="7" height="5" rx="1" />
     </svg>
   );
 
   const docsIcon = (
-    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/><path d="M6 6h10M6 10h10"/>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    >
+      <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z" />
+      <path d="M6 6h10M6 10h10" />
     </svg>
   );
 
@@ -96,7 +132,9 @@ export const Header: React.FC = () => {
       {isEditorPage && (
         <div className="hidden md:flex items-center gap-2 md:gap-4">
           <div className="flex items-center gap-2">
-            <span className="text-[10px] text-[#94A3B8] font-semibold uppercase hidden sm:inline">Lang</span>
+            <span className="text-[10px] text-[#94A3B8] font-semibold uppercase hidden sm:inline">
+              Lang
+            </span>
             <select
               value={language}
               onChange={(e) => setLanguage(e.target.value as any)}
@@ -114,8 +152,18 @@ export const Header: React.FC = () => {
               className="bg-[#1C1C2E] border border-[#2A2A45] hover:border-[#06B6D4] text-white px-2 py-0.5 md:px-3 md:py-1 text-xs md:text-sm rounded-md flex items-center gap-1.5 outline-none cursor-pointer"
             >
               <span>Filter</span>
-              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="12"
+                height="12"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3" />
               </svg>
             </button>
             {isFilterOpen && (
@@ -123,7 +171,10 @@ export const Header: React.FC = () => {
                 <div className="fixed inset-0 z-10" onClick={() => setIsFilterOpen(false)} />
                 <div className="absolute left-0 mt-2 w-48 md:w-56 bg-[#12121F] border border-[#2A2A45] rounded-lg p-2 shadow-2xl z-20 flex flex-col gap-1">
                   {filters.map((filter) => (
-                    <label key={filter.type} className="flex items-center gap-2 px-2 py-1.5 hover:bg-[#1C1C2E] rounded cursor-pointer text-xs md:text-sm text-[#F1F5F9]">
+                    <label
+                      key={filter.type}
+                      className="flex items-center gap-2 px-2 py-1.5 hover:bg-[#1C1C2E] rounded cursor-pointer text-xs md:text-sm text-[#F1F5F9]"
+                    >
                       <input
                         type="checkbox"
                         checked={filterTypes.includes(filter.type)}
@@ -165,9 +216,22 @@ export const Header: React.FC = () => {
               className="bg-[#1C1C2E] border border-[#2A2A45] hover:border-[#7C3AED] text-xs md:text-sm text-white px-2.5 py-1.5 rounded-md flex items-center gap-1.5 cursor-pointer transition-colors hidden md:flex"
             >
               <span>Share</span>
-              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/>
-                <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="12"
+                height="12"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <circle cx="18" cy="5" r="3" />
+                <circle cx="6" cy="12" r="3" />
+                <circle cx="18" cy="19" r="3" />
+                <line x1="8.59" y1="13.51" x2="15.42" y2="17.49" />
+                <line x1="15.41" y1="6.51" x2="8.59" y2="10.49" />
               </svg>
             </button>
             <Link
@@ -179,14 +243,14 @@ export const Header: React.FC = () => {
 
             {/* Hamburger Button for mobile menu */}
             <label className="hamburger md:hidden">
-              <input 
-                type="checkbox" 
-                checked={isMobileMenuOpen} 
-                onChange={(e) => setIsMobileMenuOpen(e.target.checked)} 
+              <input
+                type="checkbox"
+                checked={isMobileMenuOpen}
+                onChange={(e) => setIsMobileMenuOpen(e.target.checked)}
               />
               <svg viewBox="0 0 32 32" className="w-8 h-8">
-                <path 
-                  className="hamburger-line hamburger-line-top-bottom" 
+                <path
+                  className="hamburger-line hamburger-line-top-bottom"
                   d="M27 10 13 10C10.8 10 9 8.2 9 6 9 3.5 10.8 2 13 2 15.2 2 17 3.8 17 6L17 26C17 28.2 18.8 30 21 30 23.2 30 25 28.2 25 26 25 23.8 23.2 22 21 22L7 22"
                 />
                 <path className="hamburger-line" d="M7 16 27 16" />
@@ -204,14 +268,14 @@ export const Header: React.FC = () => {
 
             {/* Hamburger Button for mobile menu */}
             <label className="hamburger md:hidden">
-              <input 
-                type="checkbox" 
-                checked={isMobileMenuOpen} 
-                onChange={(e) => setIsMobileMenuOpen(e.target.checked)} 
+              <input
+                type="checkbox"
+                checked={isMobileMenuOpen}
+                onChange={(e) => setIsMobileMenuOpen(e.target.checked)}
               />
               <svg viewBox="0 0 32 32" className="w-8 h-8">
-                <path 
-                  className="hamburger-line hamburger-line-top-bottom" 
+                <path
+                  className="hamburger-line hamburger-line-top-bottom"
                   d="M27 10 13 10C10.8 10 9 8.2 9 6 9 3.5 10.8 2 13 2 15.2 2 17 3.8 17 6L17 26C17 28.2 18.8 30 21 30 23.2 30 25 28.2 25 26 25 23.8 23.2 22 21 22L7 22"
                 />
                 <path className="hamburger-line" d="M7 16 27 16" />
@@ -264,7 +328,9 @@ export const Header: React.FC = () => {
 
                 {/* Filter node types */}
                 <div className="flex flex-col gap-2 px-3">
-                  <span className="text-xs text-[#94A3B8] font-semibold uppercase">Filter Nodes</span>
+                  <span className="text-xs text-[#94A3B8] font-semibold uppercase">
+                    Filter Nodes
+                  </span>
                   <div className="flex flex-wrap gap-2">
                     {filters.map((filter) => (
                       <button
@@ -290,15 +356,28 @@ export const Header: React.FC = () => {
                   }}
                   className="w-full bg-[#1C1C2E] border border-[#2A2A45] hover:border-[#7C3AED] text-sm text-white py-2 rounded-lg flex items-center justify-center gap-2"
                 >
-                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/>
-                    <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <circle cx="18" cy="5" r="3" />
+                    <circle cx="6" cy="12" r="3" />
+                    <circle cx="18" cy="19" r="3" />
+                    <line x1="8.59" y1="13.51" x2="15.42" y2="17.49" />
+                    <line x1="15.41" y1="6.51" x2="8.59" y2="10.49" />
                   </svg>
                   <span>Share Workspace</span>
                 </button>
               </div>
             )}
-            
+
             {!isEditorPage && (
               <Link
                 to="/editor"

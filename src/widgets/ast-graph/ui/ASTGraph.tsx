@@ -40,7 +40,7 @@ export const ASTGraph: React.FC = () => {
       null,
       '',
       filterTypes,
-      collapsedNodeIds
+      collapsedNodeIds,
     );
 
     const { nodes: layoutedNodes, edges: layoutedEdges } = getLayoutedElements(rawNodes, rawEdges);
@@ -78,10 +78,10 @@ export const ASTGraph: React.FC = () => {
         proOptions={{ hideAttribution: true }}
       >
         <Background color="#1C1C2E" gap={16} size={1} />
-        
+
         {/* Controls styling */}
         <div className="absolute bottom-4 right-4 z-10">
-          <Controls 
+          <Controls
             showInteractive={false}
             className="!bg-[#1C1C2E] !border-[#2A2A45] !shadow-none [&_button]:!bg-[#1C1C2E] [&_button]:!border-[#2A2A45] [&_button]:!fill-[#94A3B8] [&_button:hover]:!bg-[#2A2A45]"
           />

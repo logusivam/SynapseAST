@@ -5,16 +5,17 @@ export const Footer: React.FC = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
-  
+
   // Validation states
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   const startYear = 2026;
   const currentYear = new Date().getFullYear();
-  const copyrightText = currentYear > startYear
-    ? `© ${startYear} - ${currentYear} SynapseAST. All rights reserved.`
-    : `© ${startYear} SynapseAST. All rights reserved.`;
+  const copyrightText =
+    currentYear > startYear
+      ? `© ${startYear} - ${currentYear} SynapseAST. All rights reserved.`
+      : `© ${startYear} SynapseAST. All rights reserved.`;
 
   const validate = () => {
     const newErrors: Record<string, string> = {};
@@ -67,48 +68,68 @@ export const Footer: React.FC = () => {
 
         {/* Links & Contact */}
         <div className="flex flex-wrap items-center justify-center gap-6">
-          <button 
+          <button
             onClick={() => setActiveModal('privacy')}
             className="hover:text-white transition-colors cursor-pointer text-xs md:text-sm"
           >
             Privacy Policy
           </button>
-          <button 
+          <button
             onClick={() => setActiveModal('terms')}
             className="hover:text-white transition-colors cursor-pointer text-xs md:text-sm"
           >
             Terms of Service
           </button>
-          <button 
+          <button
             onClick={() => setActiveModal('contact')}
             className="text-[#7C3AED] hover:text-[#A855F7] font-semibold transition-colors cursor-pointer text-xs md:text-sm"
           >
             Contact Us
           </button>
-          
+
           <div className="flex items-center gap-3 border-l border-[#2A2A45] pl-6 ml-2">
-            <a 
-              href="https://www.linkedin.com/in/loganathan26" 
-              target="_blank" 
-              rel="noopener noreferrer" 
+            <a
+              href="https://www.linkedin.com/in/loganathan26"
+              target="_blank"
+              rel="noopener noreferrer"
               className="text-[#94A3B8] hover:text-[#7C3AED] transition-colors"
               title="Developer's LinkedIn Profile"
             >
-              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
-                <rect x="2" y="9" width="4" height="12"/>
-                <circle cx="4" cy="4" r="2"/>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                <rect x="2" y="9" width="4" height="12" />
+                <circle cx="4" cy="4" r="2" />
               </svg>
             </a>
-            <a 
-              href="https://github.com/logusivam/SynapseAST" 
-              target="_blank" 
-              rel="noopener noreferrer" 
+            <a
+              href="https://github.com/logusivam/SynapseAST"
+              target="_blank"
+              rel="noopener noreferrer"
               className="text-[#94A3B8] hover:text-[#7C3AED] transition-colors"
               title="Project GitHub Repository"
             >
-              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
               </svg>
             </a>
           </div>
@@ -125,21 +146,49 @@ export const Footer: React.FC = () => {
           <div className="bg-[#12121F] border border-[#2A2A45] w-full max-w-lg rounded-xl p-6 shadow-2xl relative flex flex-col gap-4 animate-in fade-in zoom-in-95 duration-150 text-left">
             <div className="flex items-center justify-between border-b border-[#2A2A45] pb-3">
               <h3 className="text-lg font-bold text-white">Privacy Policy</h3>
-              <button onClick={() => setActiveModal(null)} className="text-[#94A3B8] hover:text-white cursor-pointer">
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+              <button
+                onClick={() => setActiveModal(null)}
+                className="text-[#94A3B8] hover:text-white cursor-pointer"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <line x1="18" y1="6" x2="6" y2="18" />
+                  <line x1="6" y1="6" x2="18" y2="18" />
                 </svg>
               </button>
             </div>
             <div className="text-sm text-[#94A3B8] flex flex-col gap-3 max-h-[300px] overflow-y-auto pr-1">
               <p className="text-white font-semibold">1. Client-Side Only Parsing</p>
-              <p>SynapseAST is designed as a browser-only, zero-backend studio. Every keystroke is parsed locally inside your browser using @babel/parser. Your source code never leaves your computer and is never sent to any server.</p>
+              <p>
+                SynapseAST is designed as a browser-only, zero-backend studio. Every keystroke is
+                parsed locally inside your browser using @babel/parser. Your source code never
+                leaves your computer and is never sent to any server.
+              </p>
               <p className="text-white font-semibold">2. Local Storage & Sharing</p>
-              <p>When you use the "Share" feature, your code is encoded in Base64 and appended to the URL hash. This configuration is stored exclusively in your browser history and is only shared when you explicitly copy and send the link to others.</p>
+              <p>
+                When you use the "Share" feature, your code is encoded in Base64 and appended to the
+                URL hash. This configuration is stored exclusively in your browser history and is
+                only shared when you explicitly copy and send the link to others.
+              </p>
               <p className="text-white font-semibold">3. Third-party Libraries</p>
-              <p>We bundle standard packages (like Monaco Editor and React Flow) locally. No external analytics, tracking pixels, or cookie monitors are integrated.</p>
+              <p>
+                We bundle standard packages (like Monaco Editor and React Flow) locally. No external
+                analytics, tracking pixels, or cookie monitors are integrated.
+              </p>
             </div>
-            <button onClick={() => setActiveModal(null)} className="bg-[#7C3AED] hover:bg-[#A855F7] text-white text-sm font-bold py-2 rounded-lg mt-2 cursor-pointer">
+            <button
+              onClick={() => setActiveModal(null)}
+              className="bg-[#7C3AED] hover:bg-[#A855F7] text-white text-sm font-bold py-2 rounded-lg mt-2 cursor-pointer"
+            >
               Close
             </button>
           </div>
@@ -152,21 +201,48 @@ export const Footer: React.FC = () => {
           <div className="bg-[#12121F] border border-[#2A2A45] w-full max-w-lg rounded-xl p-6 shadow-2xl relative flex flex-col gap-4 animate-in fade-in zoom-in-95 duration-150 text-left">
             <div className="flex items-center justify-between border-b border-[#2A2A45] pb-3">
               <h3 className="text-lg font-bold text-white">Terms of Service</h3>
-              <button onClick={() => setActiveModal(null)} className="text-[#94A3B8] hover:text-white cursor-pointer">
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+              <button
+                onClick={() => setActiveModal(null)}
+                className="text-[#94A3B8] hover:text-white cursor-pointer"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <line x1="18" y1="6" x2="6" y2="18" />
+                  <line x1="6" y1="6" x2="18" y2="18" />
                 </svg>
               </button>
             </div>
             <div className="text-sm text-[#94A3B8] flex flex-col gap-3 max-h-[300px] overflow-y-auto pr-1">
               <p className="text-white font-semibold">1. License</p>
-              <p>SynapseAST is licensed under the MIT License. You are free to copy, modify, distribute, and execute the code for personal or commercial projects.</p>
+              <p>
+                SynapseAST is licensed under the MIT License. You are free to copy, modify,
+                distribute, and execute the code for personal or commercial projects.
+              </p>
               <p className="text-white font-semibold">2. Disclaimer of Warranties</p>
-              <p>The software is provided "as is", without warranty of any kind, express or implied, including but not limited to the warranties of merchantability, fitness for a particular purpose, and noninfringement.</p>
+              <p>
+                The software is provided "as is", without warranty of any kind, express or implied,
+                including but not limited to the warranties of merchantability, fitness for a
+                particular purpose, and noninfringement.
+              </p>
               <p className="text-white font-semibold">3. Use Guidelines</p>
-              <p>You agree not to use SynapseAST to generate or compile malicious scripts. This tool is designed strictly for compilation analysis, educational visuals, and dev tooling.</p>
+              <p>
+                You agree not to use SynapseAST to generate or compile malicious scripts. This tool
+                is designed strictly for compilation analysis, educational visuals, and dev tooling.
+              </p>
             </div>
-            <button onClick={() => setActiveModal(null)} className="bg-[#7C3AED] hover:bg-[#A855F7] text-white text-sm font-bold py-2 rounded-lg mt-2 cursor-pointer">
+            <button
+              onClick={() => setActiveModal(null)}
+              className="bg-[#7C3AED] hover:bg-[#A855F7] text-white text-sm font-bold py-2 rounded-lg mt-2 cursor-pointer"
+            >
               Close
             </button>
           </div>
@@ -179,15 +255,26 @@ export const Footer: React.FC = () => {
           <div className="bg-[#12121F] border border-[#2A2A45] w-full max-w-md rounded-xl p-6 shadow-2xl relative flex flex-col gap-4 animate-in fade-in zoom-in-95 duration-150 text-left">
             <div className="flex items-center justify-between border-b border-[#2A2A45] pb-3">
               <h3 className="text-lg font-bold text-white">Contact Us</h3>
-              <button 
+              <button
                 onClick={() => {
                   setActiveModal(null);
                   setErrors({});
                 }}
                 className="text-[#94A3B8] hover:text-white cursor-pointer"
               >
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <line x1="18" y1="6" x2="6" y2="18" />
+                  <line x1="6" y1="6" x2="18" y2="18" />
                 </svg>
               </button>
             </div>
@@ -234,7 +321,9 @@ export const Footer: React.FC = () => {
                   className={`w-full bg-[#1C1C2E] border ${errors.message ? 'border-[#EF4444]' : 'border-[#2A2A45]'} focus:border-[#06B6D4] text-white px-3 py-2 rounded-lg outline-none text-sm resize-none`}
                   placeholder="Your message details..."
                 />
-                {errors.message && <span className="text-[10px] text-[#EF4444]">{errors.message}</span>}
+                {errors.message && (
+                  <span className="text-[10px] text-[#EF4444]">{errors.message}</span>
+                )}
               </div>
 
               <button

@@ -17,7 +17,7 @@ function findDeepestNodeAtOffset(node: any, offset: number): any | null {
       if (value.type && typeof value.start === 'number' && typeof value.end === 'number') {
         const found = findDeepestNodeAtOffset(value, offset);
         if (found) {
-          if (!deepestChild || (found.end - found.start < deepestChild.end - deepestChild.start)) {
+          if (!deepestChild || found.end - found.start < deepestChild.end - deepestChild.start) {
             deepestChild = found;
           }
         }
@@ -26,7 +26,10 @@ function findDeepestNodeAtOffset(node: any, offset: number): any | null {
           if (item && item.type && typeof item.start === 'number' && typeof item.end === 'number') {
             const found = findDeepestNodeAtOffset(item, offset);
             if (found) {
-              if (!deepestChild || (found.end - found.start < deepestChild.end - deepestChild.start)) {
+              if (
+                !deepestChild ||
+                found.end - found.start < deepestChild.end - deepestChild.start
+              ) {
                 deepestChild = found;
               }
             }
@@ -93,7 +96,7 @@ export const CodeEditor: React.FC = () => {
       startPos.lineNumber,
       startPos.column,
       endPos.lineNumber,
-      endPos.column
+      endPos.column,
     );
 
     // Apply cyan background highlight (using standard Monaco styling or class)
@@ -110,7 +113,7 @@ export const CodeEditor: React.FC = () => {
 
     // Scroll to reveal the code if selection changed
     editor.revealRangeInCenterIfOutsideViewport(range);
-    
+
     setTimeout(() => {
       isUpdatingFromGraphRef.current = false;
     }, 50);

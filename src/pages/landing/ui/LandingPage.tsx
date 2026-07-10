@@ -28,8 +28,21 @@ export const LandingPage: React.FC = () => {
       title: 'Write Code',
       desc: 'Type modern JavaScript, TypeScript, or JSX in our high-performance editor.',
       icon: (
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#7C3AED" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <rect width="20" height="16" x="2" y="4" rx="2"/><path d="m10 10-2 2 2 2"/><path d="m14 14 2-2-2-2"/><path d="m6 16 1-8 1 8"/>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="#7C3AED"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <rect width="20" height="16" x="2" y="4" rx="2" />
+          <path d="m10 10-2 2 2 2" />
+          <path d="m14 14 2-2-2-2" />
+          <path d="m6 16 1-8 1 8" />
         </svg>
       ),
     },
@@ -38,8 +51,19 @@ export const LandingPage: React.FC = () => {
       title: 'Parser Builds Tree',
       desc: '@babel/parser processes the code client-side, outputting pure AST nodes in milliseconds.',
       icon: (
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#06B6D4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M12 2v20"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="#06B6D4"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M12 2v20" />
+          <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
         </svg>
       ),
     },
@@ -48,9 +72,22 @@ export const LandingPage: React.FC = () => {
       title: 'Graph Morphs Live',
       desc: 'React Flow displays the interactive tree with spring physics, updating in real time.',
       icon: (
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="12" cy="5" r="3"/><circle cx="5" cy="19" r="3"/><circle cx="19" cy="19" r="3"/>
-          <path d="M5 16v-3a4 4 0 0 1 4-4h6a4 4 0 0 1 4 4v3"/><path d="M12 8v8"/>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="#F59E0B"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <circle cx="12" cy="5" r="3" />
+          <circle cx="5" cy="19" r="3" />
+          <circle cx="19" cy="19" r="3" />
+          <path d="M5 16v-3a4 4 0 0 1 4-4h6a4 4 0 0 1 4 4v3" />
+          <path d="M12 8v8" />
         </svg>
       ),
     },
@@ -94,7 +131,7 @@ export const LandingPage: React.FC = () => {
     },
     {
       q: 'How does SynapseAST achieve real-time, low-latency visual updates?',
-      a: 'We achieve sub-16ms update cycles by combining an optimized client-side parse phase, an 80ms keystroke debounce, a lightweight layout calculation, and Zustand\'s selector-based state subscriptions. This prevents full React tree re-renders and keeps the typing experience lag-free.',
+      a: "We achieve sub-16ms update cycles by combining an optimized client-side parse phase, an 80ms keystroke debounce, a lightweight layout calculation, and Zustand's selector-based state subscriptions. This prevents full React tree re-renders and keeps the typing experience lag-free.",
     },
     {
       q: 'Is TypeScript syntax supported out of the box?',
@@ -142,24 +179,33 @@ export const LandingPage: React.FC = () => {
             className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-[#2A2A45] bg-[#12121F] mb-6"
           >
             <span className="w-2 h-2 rounded-full bg-[#10B981] animate-pulse" />
-            <span className="text-xs text-[#94A3B8] font-medium tracking-wide">Client-Side AST Studio</span>
+            <span className="text-xs text-[#94A3B8] font-medium tracking-wide">
+              Client-Side AST Studio
+            </span>
           </motion.div>
 
           <motion.h1
             variants={itemVariants}
             className="text-5xl md:text-7xl font-extrabold tracking-tight text-white mb-6 leading-tight"
           >
-            See Your Code <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#7C3AED] via-[#A855F7] to-[#06B6D4]">Think.</span>
+            See Your Code{' '}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#7C3AED] via-[#A855F7] to-[#06B6D4]">
+              Think.
+            </span>
           </motion.h1>
 
           <motion.p
             variants={itemVariants}
             className="text-lg md:text-xl text-[#94A3B8] mb-10 max-w-2xl leading-relaxed"
           >
-            Type modern JS, TS, or React JSX. Watch the abstract syntax tree morph in real time with interactive node physics.
+            Type modern JS, TS, or React JSX. Watch the abstract syntax tree morph in real time with
+            interactive node physics.
           </motion.p>
 
-          <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-4 justify-center items-center w-full px-4 mb-16">
+          <motion.div
+            variants={itemVariants}
+            className="flex flex-col sm:flex-row gap-4 justify-center items-center w-full px-4 mb-16"
+          >
             <Link
               to="/editor"
               className="w-full sm:w-auto text-center bg-[#7C3AED] hover:bg-[#A855F7] text-white text-base font-bold px-8 py-3.5 rounded-lg shadow-lg shadow-[#7C3AED]/20 hover:shadow-[#A855F7]/30 transition-all transform hover:-translate-y-0.5"
@@ -191,10 +237,18 @@ export const LandingPage: React.FC = () => {
           <div className="flex flex-col md:flex-row h-auto md:h-[calc(100%-36px)] divide-y md:divide-y-0 md:divide-x divide-[#2A2A45]">
             {/* L Pane */}
             <div className="w-full md:w-1/2 p-4 text-left font-mono text-xs text-[#E2E8F0] space-y-2 select-none opacity-85 bg-[#0D0D1A]">
-              <div><span className="text-[#7C3AED] font-bold">function</span> <span className="text-[#06B6D4]">parse</span>(code) {'{'}</div>
+              <div>
+                <span className="text-[#7C3AED] font-bold">function</span>{' '}
+                <span className="text-[#06B6D4]">parse</span>(code) {'{'}
+              </div>
               <div className="pl-4 text-[#94A3B8]">// Debounced client-side compilation</div>
-              <div className="pl-4"><span className="text-[#7C3AED] font-bold">const</span> ast = parser.<span className="text-[#06B6D4]">parse</span>(code);</div>
-              <div className="pl-4"><span className="text-[#7C3AED] font-bold">return</span> ast;</div>
+              <div className="pl-4">
+                <span className="text-[#7C3AED] font-bold">const</span> ast = parser.
+                <span className="text-[#06B6D4]">parse</span>(code);
+              </div>
+              <div className="pl-4">
+                <span className="text-[#7C3AED] font-bold">return</span> ast;
+              </div>
               <div>{'}'}</div>
             </div>
             {/* R Pane */}
@@ -222,7 +276,9 @@ export const LandingPage: React.FC = () => {
         <section className="py-24 w-full">
           <div className="text-center mb-16">
             <h2 className="text-3xl font-extrabold text-white mb-4">How It Works</h2>
-            <p className="text-[#94A3B8] max-w-xl mx-auto">Three simple steps translate your raw characters into physics-driven graphics.</p>
+            <p className="text-[#94A3B8] max-w-xl mx-auto">
+              Three simple steps translate your raw characters into physics-driven graphics.
+            </p>
           </div>
           <div className="grid md:grid-cols-3 gap-8">
             {steps.map((step) => (
@@ -235,7 +291,9 @@ export const LandingPage: React.FC = () => {
                   <div className="p-3 bg-[#1C1C2E] rounded-lg group-hover:bg-[#7C3AED]/10 transition-colors">
                     {step.icon}
                   </div>
-                  <span className="text-4xl font-extrabold text-[#2A2A45] group-hover:text-[#7C3AED]/20 transition-colors">{step.num}</span>
+                  <span className="text-4xl font-extrabold text-[#2A2A45] group-hover:text-[#7C3AED]/20 transition-colors">
+                    {step.num}
+                  </span>
                 </div>
                 <h3 className="text-lg font-bold text-white mt-2">{step.title}</h3>
                 <p className="text-[#94A3B8] text-sm leading-relaxed">{step.desc}</p>
@@ -248,7 +306,9 @@ export const LandingPage: React.FC = () => {
         <section className="py-12 w-full border-t border-[#2A2A45]/30">
           <div className="text-center mb-16">
             <h2 className="text-3xl font-extrabold text-white mb-4">Built For Every Workflow</h2>
-            <p className="text-[#94A3B8] max-w-xl mx-auto">Whether learning, creating tools, or upgrading your portfolio.</p>
+            <p className="text-[#94A3B8] max-w-xl mx-auto">
+              Whether learning, creating tools, or upgrading your portfolio.
+            </p>
           </div>
           <div className="grid md:grid-cols-3 gap-8">
             {useCases.map((uc) => (
@@ -270,7 +330,8 @@ export const LandingPage: React.FC = () => {
               Frequently Asked Questions &mdash; Demystifying Abstract Syntax Trees (ASTs)
             </h2>
             <p className="text-[#94A3B8] max-w-2xl mx-auto text-sm leading-relaxed">
-              Learn how SynapseAST visualizes compiler theory, parses JavaScript/TypeScript, and helps you write better Babel plugins and ESLint rules.
+              Learn how SynapseAST visualizes compiler theory, parses JavaScript/TypeScript, and
+              helps you write better Babel plugins and ESLint rules.
             </p>
           </div>
 

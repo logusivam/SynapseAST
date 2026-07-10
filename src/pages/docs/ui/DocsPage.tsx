@@ -35,7 +35,11 @@ export const DocsPage: React.FC = () => {
       desc: 'Represents a function call expression, including the callee being called and the arguments array.',
       example: 'greet("Antigravity");\n// This entire line is a CallExpression',
       properties: [
-        { key: 'callee', type: 'Expression', desc: 'The node representing the function being invoked.' },
+        {
+          key: 'callee',
+          type: 'Expression',
+          desc: 'The node representing the function being invoked.',
+        },
         { key: 'arguments', type: 'Expression[]', desc: 'Array of arguments passed to the call.' },
       ],
     },
@@ -57,7 +61,11 @@ export const DocsPage: React.FC = () => {
       example: 'let count = 10;\n// count = 10 is the VariableDeclarator',
       properties: [
         { key: 'id', type: 'Pattern', desc: 'The variable name pattern (usually an Identifier).' },
-        { key: 'init', type: 'Expression | null', desc: 'The initial value of the variable, or null if none.' },
+        {
+          key: 'init',
+          type: 'Expression | null',
+          desc: 'The initial value of the variable, or null if none.',
+        },
       ],
     },
     {
@@ -66,7 +74,11 @@ export const DocsPage: React.FC = () => {
       desc: 'Represents an expression with a binary operator, such as addition, subtraction, comparison, or equality checks.',
       example: 'const result = x + y;\n// x + y is the BinaryExpression',
       properties: [
-        { key: 'operator', type: 'string', desc: 'The binary operator (e.g. "+", "-", "==", "===").' },
+        {
+          key: 'operator',
+          type: 'string',
+          desc: 'The binary operator (e.g. "+", "-", "==", "===").',
+        },
         { key: 'left', type: 'Expression', desc: 'The left side expression.' },
         { key: 'right', type: 'Expression', desc: 'The right side expression.' },
       ],
@@ -78,8 +90,16 @@ export const DocsPage: React.FC = () => {
       example: 'if (isActive) {\n  run();\n} else {\n  stop();\n}',
       properties: [
         { key: 'test', type: 'Expression', desc: 'The conditional test expression.' },
-        { key: 'consequent', type: 'Statement', desc: 'The statement executed if the test passes.' },
-        { key: 'alternate', type: 'Statement | null', desc: 'The statement executed if the test fails.' },
+        {
+          key: 'consequent',
+          type: 'Statement',
+          desc: 'The statement executed if the test passes.',
+        },
+        {
+          key: 'alternate',
+          type: 'Statement | null',
+          desc: 'The statement executed if the test fails.',
+        },
       ],
     },
   ];
@@ -88,7 +108,7 @@ export const DocsPage: React.FC = () => {
     (doc) =>
       doc.type.toLowerCase().includes(search.toLowerCase()) ||
       doc.desc.toLowerCase().includes(search.toLowerCase()) ||
-      doc.category.toLowerCase().includes(search.toLowerCase())
+      doc.category.toLowerCase().includes(search.toLowerCase()),
   );
 
   return (
@@ -111,8 +131,19 @@ export const DocsPage: React.FC = () => {
               className="w-full bg-[#1C1C2E] border border-[#2A2A45] focus:border-[#06B6D4] text-white pl-10 pr-4 py-2.5 rounded-lg outline-none transition-colors text-sm"
             />
             <span className="absolute left-3.5 top-3.5 text-[#94A3B8]">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <circle cx="11" cy="11" r="8" />
+                <line x1="21" y1="21" x2="16.65" y2="16.65" />
               </svg>
             </span>
           </div>
@@ -122,23 +153,28 @@ export const DocsPage: React.FC = () => {
         <div className="flex flex-col gap-6">
           {filteredDocs.length > 0 ? (
             filteredDocs.map((doc) => (
-              <div key={doc.type} className="bg-[#12121F] border border-[#2A2A45] rounded-xl p-4 sm:p-6 flex flex-col gap-4 shadow-xl">
+              <div
+                key={doc.type}
+                className="bg-[#12121F] border border-[#2A2A45] rounded-xl p-4 sm:p-6 flex flex-col gap-4 shadow-xl"
+              >
                 {/* Title and Badge */}
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between border-b border-[#2A2A45] pb-3 gap-2">
                   <span className="font-mono text-lg sm:text-xl font-bold text-white bg-[#7C3AED]/10 border border-[#7C3AED]/20 px-2 py-0.5 rounded w-max">
                     {doc.type}
                   </span>
-                  <span className={`text-[9px] sm:text-[10px] font-semibold px-2 py-0.5 rounded-full uppercase tracking-wider w-max ${
-                    doc.category === 'Declaration' 
-                      ? 'bg-[#7C3AED]/20 text-[#A855F7] border border-[#7C3AED]/30'
-                      : doc.category === 'Expression'
-                      ? 'bg-[#06B6D4]/20 text-[#06B6D4] border border-[#06B6D4]/30'
-                      : doc.category === 'Statement'
-                      ? 'bg-[#F59E0B]/20 text-[#F59E0B] border border-[#F59E0B]/30'
-                      : doc.category === 'Literal'
-                      ? 'bg-[#10B981]/20 text-[#10B981] border border-[#10B981]/30'
-                      : 'bg-[#94A3B8]/20 text-[#94A3B8] border border-[#94A3B8]/30'
-                  }`}>
+                  <span
+                    className={`text-[9px] sm:text-[10px] font-semibold px-2 py-0.5 rounded-full uppercase tracking-wider w-max ${
+                      doc.category === 'Declaration'
+                        ? 'bg-[#7C3AED]/20 text-[#A855F7] border border-[#7C3AED]/30'
+                        : doc.category === 'Expression'
+                          ? 'bg-[#06B6D4]/20 text-[#06B6D4] border border-[#06B6D4]/30'
+                          : doc.category === 'Statement'
+                            ? 'bg-[#F59E0B]/20 text-[#F59E0B] border border-[#F59E0B]/30'
+                            : doc.category === 'Literal'
+                              ? 'bg-[#10B981]/20 text-[#10B981] border border-[#10B981]/30'
+                              : 'bg-[#94A3B8]/20 text-[#94A3B8] border border-[#94A3B8]/30'
+                    }`}
+                  >
                     {doc.category}
                   </span>
                 </div>
@@ -163,8 +199,13 @@ export const DocsPage: React.FC = () => {
                     </thead>
                     <tbody className="divide-y divide-[#2A2A45] bg-[#12121F]">
                       {doc.properties.map((prop, idx) => (
-                        <tr key={prop.key} className={idx % 2 === 0 ? 'bg-[#12121F]' : 'bg-[#0D0D1A]'}>
-                          <td className="p-2 sm:p-3 font-mono text-[#F1F5F9] font-medium">{prop.key}</td>
+                        <tr
+                          key={prop.key}
+                          className={idx % 2 === 0 ? 'bg-[#12121F]' : 'bg-[#0D0D1A]'}
+                        >
+                          <td className="p-2 sm:p-3 font-mono text-[#F1F5F9] font-medium">
+                            {prop.key}
+                          </td>
                           <td className="p-2 sm:p-3 font-mono text-[#06B6D4]">{prop.type}</td>
                           <td className="p-2 sm:p-3 text-[#94A3B8] leading-relaxed">{prop.desc}</td>
                         </tr>

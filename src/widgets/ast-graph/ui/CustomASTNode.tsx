@@ -28,7 +28,7 @@ function getNodeColorLocal(type: string): string {
 
 export const CustomASTNode = memo(({ data }: any) => {
   const { id, type, label, properties, hasChildren, isCollapsed, range } = data;
-  
+
   const activeNodeId = useWorkspaceStore((state) => state.activeNodeId);
   const setActiveNodeId = useWorkspaceStore((state) => state.setActiveNodeId);
   const toggleCollapseNode = useWorkspaceStore((state) => state.toggleCollapseNode);
@@ -56,10 +56,10 @@ export const CustomASTNode = memo(({ data }: any) => {
     <motion.div
       layoutId={id}
       initial={{ scale: 0.8, opacity: 0 }}
-      animate={{ 
-        scale: 1, 
+      animate={{
+        scale: 1,
         opacity: 1,
-        boxShadow: isActive ? `0 0 16px ${categoryColor}` : 'none'
+        boxShadow: isActive ? `0 0 16px ${categoryColor}` : 'none',
       }}
       exit={{ scale: 0.8, opacity: 0 }}
       transition={{ type: 'spring', stiffness: 300, damping: 25 }}
@@ -83,7 +83,7 @@ export const CustomASTNode = memo(({ data }: any) => {
         <span className="text-[12px] font-bold text-white truncate" title={label}>
           {label}
         </span>
-        
+
         {propList.length > 0 && (
           <div className="mt-1 flex flex-col gap-0.5 border-t border-[#2A2A45] pt-1">
             {propList.map((prop, idx) => (
@@ -101,9 +101,7 @@ export const CustomASTNode = memo(({ data }: any) => {
           onClick={handleCollapseClick}
           className="absolute -bottom-2 right-2 flex items-center justify-center w-4 h-4 rounded-full bg-[#2A2A45] border border-[#1C1C2E] hover:bg-[#7C3AED] transition-colors"
         >
-          <span className="text-[10px] leading-[0px] text-white">
-            {isCollapsed ? '+' : '-'}
-          </span>
+          <span className="text-[10px] leading-[0px] text-white">{isCollapsed ? '+' : '-'}</span>
         </button>
       )}
 

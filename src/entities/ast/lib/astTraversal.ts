@@ -23,12 +23,22 @@ function isASTNode(value: any): boolean {
 }
 
 // Extract primitive properties and flag if node has children
-function extractNodeDetails(node: any): { properties: Record<string, any>; children: Array<{ key: string; node: any }> } {
+function extractNodeDetails(node: any): {
+  properties: Record<string, any>;
+  children: Array<{ key: string; node: any }>;
+} {
   const properties: Record<string, any> = {};
   const children: Array<{ key: string; node: any }> = [];
 
   for (const key in node) {
-    if (key === 'type' || key === 'loc' || key === 'start' || key === 'end' || key === 'extra' || key === 'tokens') {
+    if (
+      key === 'type' ||
+      key === 'loc' ||
+      key === 'start' ||
+      key === 'end' ||
+      key === 'extra' ||
+      key === 'tokens'
+    ) {
       continue;
     }
 
@@ -64,7 +74,7 @@ export function buildGraph(
   collapsedNodeIds: string[] = [],
   nodes: Node[] = [],
   edges: Edge[] = [],
-  visibleParentId: string | null = null
+  visibleParentId: string | null = null,
 ): { nodes: Node[]; edges: Edge[] } {
   if (!node || !node.type) return { nodes, edges };
 
@@ -120,7 +130,7 @@ export function buildGraph(
       collapsedNodeIds,
       nodes,
       edges,
-      currentVisibleParentId
+      currentVisibleParentId,
     );
   });
 
@@ -128,7 +138,11 @@ export function buildGraph(
 }
 
 // Dagre Layout computation
-export function getLayoutedElements(nodes: Node[], edges: Edge[], direction = 'TB'): { nodes: Node[]; edges: Edge[] } {
+export function getLayoutedElements(
+  nodes: Node[],
+  edges: Edge[],
+  direction = 'TB',
+): { nodes: Node[]; edges: Edge[] } {
   const dagreGraph = new dagre.graphlib.Graph();
   dagreGraph.setDefaultEdgeLabel(() => ({}));
 

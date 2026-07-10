@@ -4,25 +4,23 @@
 
 @layer base {
   :root {
-    --bg-primary: #0A0A12;
-    --bg-secondary: #12121F;
-    --bg-surface: #1C1C2E;
-    --bg-border: #2A2A45;
-    
-    --accent-purple: #7C3AED;
-    --accent-purple-light: #A855F7;
-    --accent-cyan: #06B6D4;
-    --accent-green: #10B981;
-    --accent-red: #EF4444;
-    --accent-amber: #F59E0B;
-    
-    --text-primary: #F1F5F9;
-    --text-secondary: #94A3B8;
-    --text-code: #E2E8F0;
+    --bg-primary: #0a0a12;
+    --bg-secondary: #12121f;
+    --bg-surface: #1c1c2e;
+    --bg-border: #2a2a45;
+
+    --accent-purple: #7c3aed;
+    --accent-purple-light: #a855f7;
+    --accent-cyan: #06b6d4;
+    --accent-green: #10b981;
+    --accent-red: #ef4444;
+    --accent-amber: #f59e0b;
+
+    --text-primary: #f1f5f9;
+    --text-secondary: #94a3b8;
+    --text-code: #e2e8f0;
   }
 }
-
-
 
 body {
   background-color: var(--bg-primary);
@@ -89,7 +87,7 @@ body {
 }
 
 .backdrop::before {
-  content: "";
+  content: '';
   position: absolute;
   height: 15rem;
   width: 15rem;
@@ -99,7 +97,7 @@ body {
 }
 
 .backdrop::after {
-  content: "";
+  content: '';
   position: absolute;
   inset: 1px;
   background-color: rgba(10, 10, 18, 0.95);
@@ -189,8 +187,6 @@ body {
   }
 }
 
-
-
 /* From Uiverse.io by JulanDeAlb - Animated Hamburger */
 .hamburger {
   cursor: pointer;
@@ -214,8 +210,9 @@ body {
   stroke-linecap: round;
   stroke-linejoin: round;
   stroke-width: 3;
-  transition: stroke-dasharray 600ms cubic-bezier(0.4, 0, 0.2, 1),
-              stroke-dashoffset 600ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition:
+    stroke-dasharray 600ms cubic-bezier(0.4, 0, 0.2, 1),
+    stroke-dashoffset 600ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .hamburger-line-top-bottom {
@@ -230,4 +227,3 @@ body {
   stroke-dasharray: 20 300;
   stroke-dashoffset: -32.42;
 }
-

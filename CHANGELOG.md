@@ -8,7 +8,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ## [1.0.0] - 2026-07-10
+
 ### Added
+
 - Professional Feature-Sliced Design (FSD) architecture client setup.
 - Monaco Editor code workspace side-by-side with interactive AST React Flow visualizer.
 - Debounced client-side parser compilation using `@babel/parser`.

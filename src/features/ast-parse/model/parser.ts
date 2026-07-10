@@ -8,7 +8,10 @@ export interface ParseResult {
   timeMs: number;
 }
 
-export function parseSourceCode(code: string, language: 'javascript' | 'typescript' | 'jsx'): ParseResult {
+export function parseSourceCode(
+  code: string,
+  language: 'javascript' | 'typescript' | 'jsx',
+): ParseResult {
   const startTime = performance.now();
   const plugins: any[] = [];
 

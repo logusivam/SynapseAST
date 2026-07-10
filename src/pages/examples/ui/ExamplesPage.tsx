@@ -91,7 +91,8 @@ export const ExamplesPage: React.FC = () => {
         <div className="mb-12">
           <h1 className="text-4xl font-extrabold text-white mb-2">Explore AST Examples</h1>
           <p className="text-[#94A3B8] text-base max-w-xl">
-            Choose a pre-built code sample to instantly load and visualize its AST structure inside the editor.
+            Choose a pre-built code sample to instantly load and visualize its AST structure inside
+            the editor.
           </p>
         </div>
 
@@ -111,20 +112,25 @@ export const ExamplesPage: React.FC = () => {
               {/* Detail block */}
               <div className="p-5 flex flex-col gap-4">
                 <div className="flex flex-col xs:flex-row xs:items-center justify-between gap-2">
-                  <h3 className="font-bold text-base text-white group-hover:text-[#7C3AED] transition-colors whitespace-normal break-words leading-snug" title={ex.title}>
+                  <h3
+                    className="font-bold text-base text-white group-hover:text-[#7C3AED] transition-colors whitespace-normal break-words leading-snug"
+                    title={ex.title}
+                  >
                     {ex.title}
                   </h3>
-                  <span className={`text-[10px] font-semibold px-2 py-0.5 rounded-full uppercase tracking-wider flex-shrink-0 w-max ${
-                    ex.category === 'Declaration' 
-                      ? 'bg-[#7C3AED]/20 text-[#A855F7] border border-[#7C3AED]/30'
-                      : ex.category === 'Expression'
-                      ? 'bg-[#06B6D4]/20 text-[#06B6D4] border border-[#06B6D4]/30'
-                      : 'bg-[#F59E0B]/20 text-[#F59E0B] border border-[#F59E0B]/30'
-                  }`}>
+                  <span
+                    className={`text-[10px] font-semibold px-2 py-0.5 rounded-full uppercase tracking-wider flex-shrink-0 w-max ${
+                      ex.category === 'Declaration'
+                        ? 'bg-[#7C3AED]/20 text-[#A855F7] border border-[#7C3AED]/30'
+                        : ex.category === 'Expression'
+                          ? 'bg-[#06B6D4]/20 text-[#06B6D4] border border-[#06B6D4]/30'
+                          : 'bg-[#F59E0B]/20 text-[#F59E0B] border border-[#F59E0B]/30'
+                    }`}
+                  >
                     {ex.category}
                   </span>
                 </div>
-                
+
                 <button
                   onClick={() => handleLoadExample(ex)}
                   className="w-full bg-[#7C3AED] hover:bg-[#A855F7] text-white text-sm font-bold py-2.5 rounded-lg transition-colors cursor-pointer"
@@ -137,18 +143,31 @@ export const ExamplesPage: React.FC = () => {
         </div>
 
         {/* Bottom banner */}
-        <div 
+        <div
           onClick={() => navigate('/editor')}
           className="bg-[#1C1C2E] border border-[#2A2A45] p-6 rounded-xl flex items-center justify-between hover:border-[#7C3AED] cursor-pointer transition-colors mb-12"
         >
           <div className="flex flex-col gap-1">
             <h4 className="text-white font-bold text-lg">Ready to write your own?</h4>
-            <p className="text-[#94A3B8] text-sm">Open the live canvas editor to visualize any custom code fragment.</p>
+            <p className="text-[#94A3B8] text-sm">
+              Open the live canvas editor to visualize any custom code fragment.
+            </p>
           </div>
           <span className="text-[#7C3AED] group font-bold flex items-center gap-2 text-sm">
             Open Editor
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-              <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <line x1="5" y1="12" x2="19" y2="12" />
+              <polyline points="12 5 19 12 12 19" />
             </svg>
           </span>
         </div>

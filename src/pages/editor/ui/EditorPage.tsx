@@ -88,14 +88,26 @@ export const EditorPage: React.FC = () => {
   const renderDesktopIcon = () => {
     if (splitWidth < 45) {
       return (
-        <svg className="w-3.5 h-3.5 text-[#94A3B8] hover:text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
+        <svg
+          className="w-3.5 h-3.5 text-[#94A3B8] hover:text-white"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          strokeWidth={3}
+        >
           <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
         </svg>
       );
     }
     if (splitWidth > 55) {
       return (
-        <svg className="w-3.5 h-3.5 text-[#94A3B8] hover:text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
+        <svg
+          className="w-3.5 h-3.5 text-[#94A3B8] hover:text-white"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          strokeWidth={3}
+        >
           <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
         </svg>
       );
@@ -111,14 +123,26 @@ export const EditorPage: React.FC = () => {
   const renderMobileIcon = () => {
     if (splitHeight < 45) {
       return (
-        <svg className="w-3.5 h-3.5 text-[#94A3B8] hover:text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
+        <svg
+          className="w-3.5 h-3.5 text-[#94A3B8] hover:text-white"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          strokeWidth={3}
+        >
           <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
         </svg>
       );
     }
     if (splitHeight > 55) {
       return (
-        <svg className="w-3.5 h-3.5 text-[#94A3B8] hover:text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
+        <svg
+          className="w-3.5 h-3.5 text-[#94A3B8] hover:text-white"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          strokeWidth={3}
+        >
           <path strokeLinecap="round" strokeLinejoin="round" d="M5 15l7-7 7 7" />
         </svg>
       );
@@ -138,12 +162,14 @@ export const EditorPage: React.FC = () => {
       {/* Main Workspace Split Pane */}
       <div className="flex-1 flex flex-col md:flex-row h-[calc(100vh-56px-24px)] overflow-hidden">
         {/* Left Pane: Code Editor */}
-        <div 
+        <div
           className="relative flex flex-col flex-shrink-0 w-full md:w-[var(--split-width)] h-[var(--split-height)] md:h-full"
-          style={{
-            '--split-width': `${splitWidth}%`,
-            '--split-height': `${splitHeight}%`
-          } as React.CSSProperties}
+          style={
+            {
+              '--split-width': `${splitWidth}%`,
+              '--split-height': `${splitHeight}%`,
+            } as React.CSSProperties
+          }
         >
           <CodeEditor />
           {parseError && (
@@ -175,12 +201,14 @@ export const EditorPage: React.FC = () => {
         </div>
 
         {/* Right Pane: AST Graph */}
-        <div 
+        <div
           className="relative flex-shrink-0 w-full md:w-[calc(100%_-_var(--split-width))] h-[calc(100%_-_var(--split-height))] md:h-full"
-          style={{
-            '--split-width': `${splitWidth}%`,
-            '--split-height': `${splitHeight}%`
-          } as React.CSSProperties}
+          style={
+            {
+              '--split-width': `${splitWidth}%`,
+              '--split-height': `${splitHeight}%`,
+            } as React.CSSProperties
+          }
         >
           <ASTGraph />
         </div>
@@ -191,10 +219,14 @@ export const EditorPage: React.FC = () => {
         <div className="flex flex-wrap items-center justify-center sm:justify-start gap-2 sm:gap-4">
           <span className="flex items-center gap-1">
             <span className="w-1.5 h-1.5 rounded-full bg-[#10B981]" />
-            Parse time: <span className="text-white font-semibold">{parseError ? '--' : `${parseTime}ms`}</span>
+            Parse time:{' '}
+            <span className="text-white font-semibold">{parseError ? '--' : `${parseTime}ms`}</span>
           </span>
           {activeNodeId && (
-            <span className="text-[#06B6D4] truncate max-w-[200px] sm:max-w-[250px]" title={activeNodeId}>
+            <span
+              className="text-[#06B6D4] truncate max-w-[200px] sm:max-w-[250px]"
+              title={activeNodeId}
+            >
               Active Node: <span className="font-semibold">{activeNodeId.split('-')[0]}</span>
             </span>
           )}

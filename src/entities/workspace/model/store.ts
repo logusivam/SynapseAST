@@ -25,7 +25,7 @@ export interface WorkspaceState {
   parseTime: number; // in ms
   filterTypes: string[]; // types of nodes to hide
   collapsedNodeIds: string[]; // nodes whose children are hidden
-  
+
   // Actions
   setCode: (code: string) => void;
   setLanguage: (lang: 'javascript' | 'typescript' | 'jsx') => void;
@@ -65,19 +65,22 @@ export const useWorkspaceStore = create<WorkspaceState>((set) => ({
   setLanguage: (language) => set({ language }),
   setAST: (ast, parseTime) => set({ ast, parseTime, parseError: null }),
   setParseError: (parseError) => set({ parseError }),
-  setActiveNodeId: (activeNodeId, range = null) => set((state) => ({
-    activeNodeId,
-    highlightRange: range !== undefined ? range : state.highlightRange
-  })),
-  toggleFilterType: (type) => set((state) => ({
-    filterTypes: state.filterTypes.includes(type)
-      ? state.filterTypes.filter((t) => t !== type)
-      : [...state.filterTypes, type]
-  })),
+  setActiveNodeId: (activeNodeId, range = null) =>
+    set((state) => ({
+      activeNodeId,
+      highlightRange: range !== undefined ? range : state.highlightRange,
+    })),
+  toggleFilterType: (type) =>
+    set((state) => ({
+      filterTypes: state.filterTypes.includes(type)
+        ? state.filterTypes.filter((t) => t !== type)
+        : [...state.filterTypes, type],
+    })),
   setFilterTypes: (filterTypes) => set({ filterTypes }),
-  toggleCollapseNode: (id) => set((state) => ({
-    collapsedNodeIds: state.collapsedNodeIds.includes(id)
-      ? state.collapsedNodeIds.filter((cid) => cid !== id)
-      : [...state.collapsedNodeIds, id]
-  })),
+  toggleCollapseNode: (id) =>
+    set((state) => ({
+      collapsedNodeIds: state.collapsedNodeIds.includes(id)
+        ? state.collapsedNodeIds.filter((cid) => cid !== id)
+        : [...state.collapsedNodeIds, id],
+    })),
 }));
