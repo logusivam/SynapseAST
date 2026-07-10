@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Header } from '@/widgets/header/ui/Header';
 import { Footer } from '@/widgets/footer/ui/Footer';
 
 export const LandingPage: React.FC = () => {
+  const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -44,11 +46,11 @@ export const LandingPage: React.FC = () => {
     {
       num: '3',
       title: 'Graph Morphs Live',
-      desc: 'Dagre layouts the structure, and Framer Motion smooth-morphs node positions.',
+      desc: 'React Flow displays the interactive tree with spring physics, updating in real time.',
       icon: (
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <circle cx="12" cy="5" r="3"/><circle cx="5" cy="19" r="3"/><circle cx="19" cy="19" r="3"/>
-          <path d="m9 17 2-2 1-1"/><path d="m15 17-2-2-1-1"/><path d="M12 8v4"/>
+          <path d="M5 16v-3a4 4 0 0 1 4-4h6a4 4 0 0 1 4 4v3"/><path d="M12 8v8"/>
         </svg>
       ),
     },
@@ -57,15 +59,66 @@ export const LandingPage: React.FC = () => {
   const useCases = [
     {
       title: 'Learn ASTs Visually',
-      desc: 'Perfect for students and teachers of computer science. No more raw JSON headaches; see compiler theory brought to life.',
+      desc: 'Perfect for computer science students and developers seeking to master compiler principles and parser theory through direct interaction.',
     },
     {
       title: 'Debug Babel Plugins',
-      desc: 'Simulate transformation outcomes instantly. Map changes between source ranges and target compiler nodes in real time.',
+      desc: 'Inspect exact structures and nodes side-by-side to understand translation logic and easily build custom compilation plugins.',
     },
     {
       title: 'Understand ESLint Rules',
-      desc: 'See node visitors, declarations, expressions, and structures so you can write custom lint regulations faster.',
+      desc: 'Trace ESTree node types and property values inside visual nodes to facilitate writing custom syntax-checking rules.',
+    },
+  ];
+
+  const faqItems = [
+    {
+      q: 'What is an Abstract Syntax Tree (AST) in compiler design?',
+      a: 'An Abstract Syntax Tree (AST) is a hierarchical tree representation of the structural syntax of source code written in a programming language. In compiler design, linters (ESLint), and transpilers (Babel), the AST acts as an intermediate structure that makes analyzing, translating, and transforming code easy for machines.',
+    },
+    {
+      q: 'How does SynapseAST visualize JavaScript and TypeScript code?',
+      a: 'SynapseAST uses a client-side parser (@babel/parser) to analyze your JS, TS, or JSX code, transforming it into an ESTree-compliant JSON AST. It then maps this structure onto a coordinate system using a specialized layout engine (Dagre) and renders it as an interactive, animated node graph using React Flow and Framer Motion.',
+    },
+    {
+      q: 'What makes SynapseAST different from traditional AST Explorers?',
+      a: 'Traditional tools output static, read-only JSON text trees. SynapseAST is an interactive visual simulator. It morphs, splits, merges, and animates tree nodes in real time using spring physics as you type, and supports bidirectional highlight syncing between the node canvas and the Monaco code editor.',
+    },
+    {
+      q: 'Does SynapseAST send my source code to any backend servers?',
+      a: 'No. SynapseAST is built as a client-side-only Single Page Application (SPA). All AST parsing, coordinate layout, and rendering happen inside your browser using JavaScript. Your source code never leaves your local machine, ensuring absolute security and zero data leaks.',
+    },
+    {
+      q: 'Can SynapseAST help me write custom ESLint rules or Babel plugins?',
+      a: 'Yes. Writing ESLint rules or Babel transforms requires you to mentally trace AST node relationships (e.g., CallExpression, Identifier, VariableDeclarator). SynapseAST shows you exactly how these nodes are structured and highlights node properties on hover, eliminating the trial-and-error of custom rule development.',
+    },
+    {
+      q: 'How does SynapseAST achieve real-time, low-latency visual updates?',
+      a: 'We achieve sub-16ms update cycles by combining an optimized client-side parse phase, an 80ms keystroke debounce, a lightweight layout calculation, and Zustand\'s selector-based state subscriptions. This prevents full React tree re-renders and keeps the typing experience lag-free.',
+    },
+    {
+      q: 'Is TypeScript syntax supported out of the box?',
+      a: 'Yes. The @babel/parser configuration includes TypeScript and JSX plugins. You can parse modern TypeScript interfaces, generics, type annotations, and TSX files, and see their corresponding TS-specific AST nodes visualised.',
+    },
+    {
+      q: 'How does the bidirectional synchronization work?',
+      a: 'Clicking a node in the graph triggers a lookup in the AST range map, which instructs the Monaco Editor to highlight the exact character positions of that syntax construct. Conversely, moving your cursor in Monaco updates the active node state, highlighting the corresponding node on the graph canvas.',
+    },
+    {
+      q: 'Can I filter out specific AST nodes or collapse tree branches?',
+      a: 'Yes. Large codebases produce deep ASTs. SynapseAST lets you collapse parent nodes (like a whole Class body or Function body) by clicking them. You can also use the filter dropdown to hide low-level leaf nodes like Identifier or Literal to reduce visual noise.',
+    },
+    {
+      q: 'How can I share or export my AST graph designs?',
+      a: 'You can export your visual tree layouts as high-resolution PNG images. You can also share your exact editor state by clicking "Share," which generates a unique shareable URL containing your code compressed in a Base64 hash.',
+    },
+    {
+      q: 'Which AST specification does SynapseAST follow?',
+      a: 'SynapseAST parses JS/TS code into AST nodes that conform strictly to the ESTree standard format. This is the same standard format used by ESLint, Babel, Prettier, and SWC, ensuring your learnings translate directly to mainstream development tools.',
+    },
+    {
+      q: 'Is SynapseAST free to use?',
+      a: 'Yes. SynapseAST is completely free, open-source, and runs entirely in-browser. It is designed to be an accessible learning aid for computer science students, compiler enthusiasts, and seasoned developers alike.',
     },
   ];
 
@@ -207,6 +260,66 @@ export const LandingPage: React.FC = () => {
                 <p className="text-[#94A3B8] text-sm leading-relaxed">{uc.desc}</p>
               </div>
             ))}
+          </div>
+        </section>
+
+        {/* FAQ Section */}
+        <section className="py-16 w-full border-t border-[#2A2A45]/30 text-left">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-extrabold text-white mb-4">
+              Frequently Asked Questions &mdash; Demystifying Abstract Syntax Trees (ASTs)
+            </h2>
+            <p className="text-[#94A3B8] max-w-2xl mx-auto text-sm leading-relaxed">
+              Learn how SynapseAST visualizes compiler theory, parses JavaScript/TypeScript, and helps you write better Babel plugins and ESLint rules.
+            </p>
+          </div>
+
+          <div className="max-w-3xl mx-auto flex flex-col gap-4">
+            {faqItems.map((faq, index) => {
+              const isOpen = openFaqIndex === index;
+              return (
+                <div
+                  key={index}
+                  className="bg-[#12121F] border border-[#2A2A45] hover:border-[#7C3AED]/60 rounded-xl overflow-hidden transition-all duration-300 shadow-xl"
+                >
+                  <button
+                    onClick={() => setOpenFaqIndex(isOpen ? null : index)}
+                    className="w-full flex items-center justify-between p-5 text-left text-white font-semibold text-sm sm:text-base hover:bg-[#1C1C2E]/40 outline-none select-none transition-colors"
+                  >
+                    <span>{faq.q}</span>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="18"
+                      height="18"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className={`text-[#7C3AED] transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}
+                    >
+                      <polyline points="6 9 12 15 18 9" />
+                    </svg>
+                  </button>
+
+                  <AnimatePresence initial={false}>
+                    {isOpen && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: 'auto', opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.25, ease: 'easeInOut' }}
+                      >
+                        <div className="px-5 pb-5 pt-1 border-t border-[#2A2A45]/30 text-xs sm:text-sm text-[#94A3B8] leading-relaxed font-normal">
+                          {faq.a}
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              );
+            })}
           </div>
         </section>
       </main>
