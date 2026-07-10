@@ -10,9 +10,11 @@ export const Footer: React.FC = () => {
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  // Dynamic copyright years
+  const startYear = 2026;
   const currentYear = new Date().getFullYear();
-  const nextYear = currentYear + 1;
+  const copyrightText = currentYear > startYear
+    ? `© ${startYear} - ${currentYear} SynapseAST. All rights reserved.`
+    : `© ${startYear} SynapseAST. All rights reserved.`;
 
   const validate = () => {
     const newErrors: Record<string, string> = {};
@@ -59,10 +61,10 @@ export const Footer: React.FC = () => {
       <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6 text-sm text-[#94A3B8]">
         {/* Brand Metadata */}
         <div className="flex flex-col items-center md:items-start gap-1">
-          <span className="font-bold text-white tracking-wide">logusivam vision</span>
           <span className="text-xs text-[#94A3B8]">Built by Loganathan G P</span>
+          <span className="font-bold text-white tracking-wide">logusivam vision</span>
           <span className="text-[11px] text-[#94A3B8] mt-1">
-            &copy; {currentYear} - {nextYear} SynapseAST. All rights reserved.
+            {copyrightText}
           </span>
         </div>
 

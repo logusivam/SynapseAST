@@ -59,3 +59,120 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: var(--accent-purple);
 }
+
+/* From Uiverse.io by ilkhoeri - Legend Action Menu (adapted to our dark theme) */
+.action-wrap {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+  border-radius: 12px;
+  background-color: rgba(18, 18, 31, 0.95);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--bg-border);
+  padding: 8px;
+  gap: 4px;
+}
+
+.action {
+  --sz-light-hover: 44px;
+  --rd-light-hover: 9999px;
+  --l-light-hover: 12px;
+  --cl-light: #0000;
+  --cr-light: var(--accent-purple);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  transition: all 300ms ease;
+  height: 2.25rem;
+  width: 100%;
+  border: none;
+  color: var(--text-primary);
+  background: none transparent;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 8px;
+}
+
+.action-icon {
+  height: 1.5rem;
+  width: 1.5rem;
+  min-width: 1.5rem;
+  position: relative;
+  z-index: 9;
+  border-radius: 50%;
+  transition: all 300ms ease;
+}
+
+.action-content {
+  opacity: 0.85;
+  font-size: 11px;
+  line-height: 1.5;
+  background-color: transparent;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: max-content;
+  padding-left: 8px;
+  z-index: 9;
+  font-weight: 500;
+  color: var(--text-secondary);
+  transition: all 300ms ease;
+}
+
+.action:hover {
+  background-color: var(--bg-surface);
+}
+
+.action:hover .action-icon {
+  transform: scale(1.2);
+}
+
+.action:hover .action-content {
+  color: var(--text-primary);
+  opacity: 1;
+}
+
+/* From Uiverse.io by JulanDeAlb - Animated Hamburger */
+.hamburger {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hamburger input {
+  display: none;
+}
+
+.hamburger svg {
+  height: 2.25em;
+  transition: transform 600ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hamburger-line {
+  fill: none;
+  stroke: var(--text-primary);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 3;
+  transition: stroke-dasharray 600ms cubic-bezier(0.4, 0, 0.2, 1),
+              stroke-dashoffset 600ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hamburger-line-top-bottom {
+  stroke-dasharray: 12 63;
+}
+
+.hamburger input:checked + svg {
+  transform: rotate(-45deg);
+}
+
+.hamburger input:checked + svg .hamburger-line-top-bottom {
+  stroke-dasharray: 20 300;
+  stroke-dashoffset: -32.42;
+}
+

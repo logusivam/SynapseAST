@@ -52,19 +52,19 @@ export const EditorPage: React.FC = () => {
       </div>
 
       {/* Bottom Status Bar */}
-      <div className="h-[24px] bg-[#12121F] border-t border-[#2A2A45] px-4 flex items-center justify-between text-[11px] text-[#94A3B8] font-medium z-30 select-none">
-        <div className="flex items-center gap-4">
+      <div className="min-h-[24px] h-auto py-1 sm:py-0 bg-[#12121F] border-t border-[#2A2A45] px-4 flex flex-col sm:flex-row items-center justify-between text-[11px] text-[#94A3B8] font-medium z-30 select-none gap-1 sm:gap-0">
+        <div className="flex flex-wrap items-center justify-center sm:justify-start gap-2 sm:gap-4">
           <span className="flex items-center gap-1">
             <span className="w-1.5 h-1.5 rounded-full bg-[#10B981]" />
             Parse time: <span className="text-white font-semibold">{parseError ? '--' : `${parseTime}ms`}</span>
           </span>
           {activeNodeId && (
-            <span className="text-[#06B6D4] truncate max-w-[250px]" title={activeNodeId}>
+            <span className="text-[#06B6D4] truncate max-w-[200px] sm:max-w-[250px]" title={activeNodeId}>
               Active Node: <span className="font-semibold">{activeNodeId.split('-')[0]}</span>
             </span>
           )}
         </div>
-        <div>
+        <div className="text-[10px] sm:text-[11px]">
           <span>Client-only CSR Engine</span>
         </div>
       </div>

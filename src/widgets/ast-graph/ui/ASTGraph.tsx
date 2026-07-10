@@ -75,6 +75,7 @@ export const ASTGraph: React.FC = () => {
         fitViewOptions={{ padding: 0.2 }}
         minZoom={0.1}
         maxZoom={2.0}
+        proOptions={{ hideAttribution: true }}
       >
         <Background color="#1C1C2E" gap={16} size={1} />
         
@@ -88,18 +89,18 @@ export const ASTGraph: React.FC = () => {
 
         {/* Legend Panel */}
         <Panel position="bottom-left" className="m-4">
-          <div className="bg-[#12121F]/90 backdrop-blur-md border border-[#2A2A45] p-3 rounded-lg flex flex-col gap-1.5 shadow-xl max-w-[200px]">
-            <span className="text-[10px] uppercase tracking-wider text-[#94A3B8] font-bold border-b border-[#2A2A45] pb-1 mb-1">
+          <div className="action-wrap">
+            <span className="text-[10px] uppercase tracking-wider text-[#94A3B8] font-bold border-b border-[#2A2A45] w-full pb-1 mb-1 px-2">
               Legend
             </span>
             {legendItems.map((item) => (
-              <div key={item.label} className="flex items-center gap-2">
+              <button key={item.label} className="action" type="button">
                 <span
-                  className="w-2.5 h-2.5 rounded-full"
+                  className="action-icon block rounded-full"
                   style={{ backgroundColor: item.color }}
                 />
-                <span className="text-[11px] text-[#F1F5F9]">{item.label}</span>
-              </div>
+                <span className="action-content">{item.label}</span>
+              </button>
             ))}
           </div>
         </Panel>

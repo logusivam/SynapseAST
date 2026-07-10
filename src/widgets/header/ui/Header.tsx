@@ -187,20 +187,20 @@ export const Header: React.FC = () => {
             </Link>
 
             {/* Hamburger Button for mobile menu */}
-            <button
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="md:hidden p-1.5 text-[#94A3B8] hover:text-white outline-none cursor-pointer"
-            >
-              {isMobileMenuOpen ? (
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
-                </svg>
-              ) : (
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="18" x2="20" y2="18"/>
-                </svg>
-              )}
-            </button>
+            <label className="hamburger md:hidden">
+              <input 
+                type="checkbox" 
+                checked={isMobileMenuOpen} 
+                onChange={(e) => setIsMobileMenuOpen(e.target.checked)} 
+              />
+              <svg viewBox="0 0 32 32" className="w-8 h-8">
+                <path 
+                  className="hamburger-line hamburger-line-top-bottom" 
+                  d="M27 10 13 10C10.8 10 9 8.2 9 6 9 3.5 10.8 2 13 2 15.2 2 17 3.8 17 6L17 26C17 28.2 18.8 30 21 30 23.2 30 25 28.2 25 26 25 23.8 23.2 22 21 22L7 22"
+                />
+                <path className="hamburger-line" d="M7 16 27 16" />
+              </svg>
+            </label>
           </>
         )}
       </div>

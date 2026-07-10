@@ -110,11 +110,11 @@ export const ExamplesPage: React.FC = () => {
 
               {/* Detail block */}
               <div className="p-5 flex flex-col gap-4">
-                <div className="flex items-center justify-between">
-                  <h3 className="font-bold text-base text-white group-hover:text-[#7C3AED] transition-colors truncate pr-2" title={ex.title}>
+                <div className="flex flex-col xs:flex-row xs:items-center justify-between gap-2">
+                  <h3 className="font-bold text-base text-white group-hover:text-[#7C3AED] transition-colors whitespace-normal break-words leading-snug" title={ex.title}>
                     {ex.title}
                   </h3>
-                  <span className={`text-[10px] font-semibold px-2 py-0.5 rounded-full uppercase tracking-wider flex-shrink-0 ${
+                  <span className={`text-[10px] font-semibold px-2 py-0.5 rounded-full uppercase tracking-wider flex-shrink-0 w-max ${
                     ex.category === 'Declaration' 
                       ? 'bg-[#7C3AED]/20 text-[#A855F7] border border-[#7C3AED]/30'
                       : ex.category === 'Expression'

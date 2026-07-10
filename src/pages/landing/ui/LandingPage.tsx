@@ -106,16 +106,16 @@ export const LandingPage: React.FC = () => {
             Type modern JS, TS, or React JSX. Watch the abstract syntax tree morph in real time with interactive node physics.
           </motion.p>
 
-          <motion.div variants={itemVariants} className="flex flex-wrap gap-4 justify-center mb-16">
+          <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-4 justify-center items-center w-full px-4 mb-16">
             <Link
               to="/editor"
-              className="bg-[#7C3AED] hover:bg-[#A855F7] text-white text-base font-bold px-8 py-3.5 rounded-lg shadow-lg shadow-[#7C3AED]/20 hover:shadow-[#A855F7]/30 transition-all transform hover:-translate-y-0.5"
+              className="w-full sm:w-auto text-center bg-[#7C3AED] hover:bg-[#A855F7] text-white text-base font-bold px-8 py-3.5 rounded-lg shadow-lg shadow-[#7C3AED]/20 hover:shadow-[#A855F7]/30 transition-all transform hover:-translate-y-0.5"
             >
               Try It Free
             </Link>
             <Link
               to="/examples"
-              className="bg-[#12121F] hover:bg-[#1C1C2E] border border-[#2A2A45] hover:border-[#94A3B8] text-white text-base font-semibold px-8 py-3.5 rounded-lg transition-all"
+              className="w-full sm:w-auto text-center bg-[#12121F] hover:bg-[#1C1C2E] border border-[#2A2A45] hover:border-[#94A3B8] text-white text-base font-semibold px-8 py-3.5 rounded-lg transition-all"
             >
               View Examples
             </Link>
@@ -127,7 +127,7 @@ export const LandingPage: React.FC = () => {
           initial={{ y: 40, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.6, type: 'spring', stiffness: 50 }}
-          className="w-full max-w-5xl aspect-[16/9] border border-[#2A2A45] rounded-xl bg-[#12121F] shadow-2xl overflow-hidden relative group"
+          className="w-full max-w-5xl aspect-auto md:aspect-[16/9] min-h-[360px] md:min-h-0 border border-[#2A2A45] rounded-xl bg-[#12121F] shadow-2xl overflow-hidden relative group"
         >
           <div className="h-9 border-b border-[#2A2A45] bg-[#0A0A12] px-4 flex items-center gap-2">
             <span className="w-3 h-3 rounded-full bg-[#EF4444]/80" />
@@ -135,9 +135,9 @@ export const LandingPage: React.FC = () => {
             <span className="w-3 h-3 rounded-full bg-[#10B981]/80" />
             <span className="text-[11px] text-[#94A3B8] ml-2 font-mono">synapse-editor.ts</span>
           </div>
-          <div className="flex h-[calc(100%-36px)] divide-x divide-[#2A2A45]">
+          <div className="flex flex-col md:flex-row h-auto md:h-[calc(100%-36px)] divide-y md:divide-y-0 md:divide-x divide-[#2A2A45]">
             {/* L Pane */}
-            <div className="w-1/2 p-4 text-left font-mono text-xs text-[#E2E8F0] space-y-2 select-none opacity-85 bg-[#0D0D1A]">
+            <div className="w-full md:w-1/2 p-4 text-left font-mono text-xs text-[#E2E8F0] space-y-2 select-none opacity-85 bg-[#0D0D1A]">
               <div><span className="text-[#7C3AED] font-bold">function</span> <span className="text-[#06B6D4]">parse</span>(code) {'{'}</div>
               <div className="pl-4 text-[#94A3B8]">// Debounced client-side compilation</div>
               <div className="pl-4"><span className="text-[#7C3AED] font-bold">const</span> ast = parser.<span className="text-[#06B6D4]">parse</span>(code);</div>
@@ -145,7 +145,7 @@ export const LandingPage: React.FC = () => {
               <div>{'}'}</div>
             </div>
             {/* R Pane */}
-            <div className="w-1/2 bg-[#0A0A12] relative p-6 flex flex-col justify-center items-center">
+            <div className="w-full md:w-1/2 bg-[#0A0A12] relative p-6 flex flex-col justify-center items-center min-h-[200px] md:min-h-0">
               <div className="flex flex-col gap-6 relative">
                 {/* Visual Tree */}
                 <div className="px-4 py-2 border border-[#7C3AED] bg-[#1C1C2E] rounded-md text-xs font-bold text-center border-t-4 border-t-[#7C3AED] shadow-lg shadow-[#7C3AED]/10">
