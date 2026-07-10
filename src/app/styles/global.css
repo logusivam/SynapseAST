@@ -64,77 +64,111 @@ body {
 .action-wrap {
   position: relative;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
   flex-direction: column;
-  border-radius: 12px;
-  background-color: rgba(18, 18, 31, 0.95);
-  backdrop-filter: blur(8px);
-  border: 1px solid var(--bg-border);
+  border-radius: 9999px;
   padding: 8px;
-  gap: 4px;
+  gap: 8px;
+  z-index: 10;
+}
+
+.backdrop {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border: 1px solid var(--bg-border);
+}
+
+.backdrop::before {
+  content: "";
+  position: absolute;
+  height: 15rem;
+  width: 15rem;
+  border-radius: 9999px;
+  background: linear-gradient(144deg, #af40ff, #4f46e5, #06b6d4);
+  animation: rotate 3s linear infinite;
+}
+
+.backdrop::after {
+  content: "";
+  position: absolute;
+  inset: 1px;
+  background-color: rgba(10, 10, 18, 0.95);
+  backdrop-filter: blur(8px);
+  border-radius: 9999px;
+  z-index: 1;
 }
 
 .action {
-  --sz-light-hover: 44px;
-  --rd-light-hover: 9999px;
-  --l-light-hover: 12px;
-  --cl-light: #0000;
-  --cr-light: var(--accent-purple);
   position: relative;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
   transition: all 300ms ease;
   height: 2.25rem;
-  width: 100%;
+  width: 2.25rem;
   border: none;
-  color: var(--text-primary);
   background: none transparent;
   cursor: pointer;
-  padding: 4px 8px;
-  border-radius: 8px;
+  padding: 0;
+  border-radius: 9999px;
+  z-index: 9;
 }
 
 .action-icon {
-  height: 1.5rem;
-  width: 1.5rem;
-  min-width: 1.5rem;
+  height: 1.25rem;
+  width: 1.25rem;
+  min-width: 1.25rem;
   position: relative;
   z-index: 9;
   border-radius: 50%;
   transition: all 300ms ease;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
 .action-content {
-  opacity: 0.85;
+  transition: all 400ms cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 0;
+  pointer-events: none;
   font-size: 11px;
-  line-height: 1.5;
-  background-color: transparent;
+  background-color: var(--bg-secondary);
   border-radius: 6px;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
   width: max-content;
-  padding-left: 8px;
-  z-index: 9;
-  font-weight: 500;
-  color: var(--text-secondary);
-  transition: all 300ms ease;
-}
-
-.action:hover {
-  background-color: var(--bg-surface);
+  height: 1.75rem;
+  padding: 4px 10px;
+  position: absolute;
+  left: 0;
+  z-index: -1;
+  border: 1px solid var(--bg-border);
+  color: var(--text-primary);
+  font-weight: 600;
+  letter-spacing: 0.025em;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
 }
 
 .action:hover .action-icon {
-  transform: scale(1.2);
+  transform: scale(1.3);
+  border-color: rgba(255, 255, 255, 0.4);
 }
 
 .action:hover .action-content {
-  color: var(--text-primary);
   opacity: 1;
+  pointer-events: auto;
+  left: calc(100% + 14px);
+  z-index: 9;
 }
+
 
 /* From Uiverse.io by JulanDeAlb - Animated Hamburger */
 .hamburger {

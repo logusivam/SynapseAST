@@ -90,9 +90,7 @@ export const ASTGraph: React.FC = () => {
         {/* Legend Panel */}
         <Panel position="bottom-left" className="m-4">
           <div className="action-wrap">
-            <span className="text-[10px] uppercase tracking-wider text-[#94A3B8] font-bold border-b border-[#2A2A45] w-full pb-1 mb-1 px-2">
-              Legend
-            </span>
+            <div className="backdrop" />
             {legendItems.map((item) => (
               <button key={item.label} className="action" type="button">
                 <span
