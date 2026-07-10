@@ -88,7 +88,7 @@ export const Footer: React.FC = () => {
           
           <div className="flex items-center gap-3 border-l border-[#2A2A45] pl-6 ml-2">
             <a 
-              href="https://www.linkedin.com/in/loganathan-g-p" 
+              href="https://www.linkedin.com/in/loganathan26" 
               target="_blank" 
               rel="noopener noreferrer" 
               className="text-[#94A3B8] hover:text-[#7C3AED] transition-colors"
