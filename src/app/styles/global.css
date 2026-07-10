@@ -22,6 +22,8 @@
   }
 }
 
+
+
 body {
   background-color: var(--bg-primary);
   color: var(--text-primary);
@@ -168,6 +170,25 @@ body {
   left: calc(100% + 14px);
   z-index: 9;
 }
+
+@media (max-width: 768px) {
+  .action-wrap {
+    flex-direction: row;
+    padding: 6px;
+    gap: 6px;
+  }
+  .backdrop::before {
+    height: 6rem;
+    width: 20rem;
+  }
+  .action:hover .action-content {
+    left: 50% !important;
+    top: auto !important;
+    bottom: calc(100% + 10px) !important;
+    transform: translateX(-50%) !important;
+  }
+}
+
 
 
 /* From Uiverse.io by JulanDeAlb - Animated Hamburger */
