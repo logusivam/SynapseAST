@@ -94,7 +94,7 @@ export const Header: React.FC = () => {
 
       {/* Center Controls (Editor specific layout controls) */}
       {isEditorPage && (
-        <div className="flex items-center gap-2 md:gap-4">
+        <div className="hidden md:flex items-center gap-2 md:gap-4">
           <div className="flex items-center gap-2">
             <span className="text-[10px] text-[#94A3B8] font-semibold uppercase hidden sm:inline">Lang</span>
             <select
@@ -162,7 +162,7 @@ export const Header: React.FC = () => {
           <>
             <button
               onClick={handleShare}
-              className="bg-[#1C1C2E] border border-[#2A2A45] hover:border-[#7C3AED] text-xs md:text-sm text-white px-2.5 py-1.5 rounded-md flex items-center gap-1.5 cursor-pointer transition-colors"
+              className="bg-[#1C1C2E] border border-[#2A2A45] hover:border-[#7C3AED] text-xs md:text-sm text-white px-2.5 py-1.5 rounded-md flex items-center gap-1.5 cursor-pointer transition-colors hidden md:flex"
             >
               <span>Share</span>
               <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -172,10 +172,26 @@ export const Header: React.FC = () => {
             </button>
             <Link
               to="/"
-              className="text-[#94A3B8] hover:text-white text-xs md:text-sm font-medium transition-colors"
+              className="text-[#94A3B8] hover:text-white text-xs md:text-sm font-medium transition-colors hidden md:block"
             >
               Home
             </Link>
+
+            {/* Hamburger Button for mobile menu */}
+            <label className="hamburger md:hidden">
+              <input 
+                type="checkbox" 
+                checked={isMobileMenuOpen} 
+                onChange={(e) => setIsMobileMenuOpen(e.target.checked)} 
+              />
+              <svg viewBox="0 0 32 32" className="w-8 h-8">
+                <path 
+                  className="hamburger-line hamburger-line-top-bottom" 
+                  d="M27 10 13 10C10.8 10 9 8.2 9 6 9 3.5 10.8 2 13 2 15.2 2 17 3.8 17 6L17 26C17 28.2 18.8 30 21 30 23.2 30 25 28.2 25 26 25 23.8 23.2 22 21 22L7 22"
+                />
+                <path className="hamburger-line" d="M7 16 27 16" />
+              </svg>
+            </label>
           </>
         ) : (
           <>
@@ -207,7 +223,7 @@ export const Header: React.FC = () => {
 
       {/* Mobile Animated Dropdown Navigation Menu */}
       <AnimatePresence>
-        {isMobileMenuOpen && !isEditorPage && (
+        {isMobileMenuOpen && (
           <motion.div
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
@@ -226,13 +242,72 @@ export const Header: React.FC = () => {
                 <span>{link.label}</span>
               </Link>
             ))}
-            <Link
-              to="/editor"
-              onClick={() => setIsMobileMenuOpen(false)}
-              className="bg-[#7C3AED] hover:bg-[#A855F7] text-white text-center text-sm font-semibold py-2.5 rounded-lg transition-colors mt-2"
-            >
-              Open Editor
-            </Link>
+
+            {isEditorPage && (
+              <div className="flex flex-col gap-3 border-t border-[#2A2A45] pt-3 mt-1">
+                {/* Language Select */}
+                <div className="flex items-center justify-between px-3">
+                  <span className="text-xs text-[#94A3B8] font-semibold uppercase">Language</span>
+                  <select
+                    value={language}
+                    onChange={(e) => {
+                      setLanguage(e.target.value as any);
+                      setIsMobileMenuOpen(false);
+                    }}
+                    className="bg-[#1C1C2E] border border-[#2A2A45] text-white px-3 py-1 text-sm rounded-md focus:border-[#06B6D4] outline-none cursor-pointer"
+                  >
+                    <option value="javascript">JavaScript</option>
+                    <option value="typescript">TypeScript</option>
+                    <option value="jsx">React JSX</option>
+                  </select>
+                </div>
+
+                {/* Filter node types */}
+                <div className="flex flex-col gap-2 px-3">
+                  <span className="text-xs text-[#94A3B8] font-semibold uppercase">Filter Nodes</span>
+                  <div className="flex flex-wrap gap-2">
+                    {filters.map((filter) => (
+                      <button
+                        key={filter.type}
+                        onClick={() => handleFilterToggle(filter.type)}
+                        className={`text-xs px-2.5 py-1 rounded border transition-colors ${
+                          filterTypes.includes(filter.type)
+                            ? 'bg-[#7C3AED]/20 border-[#7C3AED] text-white'
+                            : 'bg-[#1C1C2E] border-[#2A2A45] text-[#94A3B8]'
+                        }`}
+                      >
+                        {filter.label.split(' ')[0]}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Share Button */}
+                <button
+                  onClick={() => {
+                    handleShare();
+                    setIsMobileMenuOpen(false);
+                  }}
+                  className="w-full bg-[#1C1C2E] border border-[#2A2A45] hover:border-[#7C3AED] text-sm text-white py-2 rounded-lg flex items-center justify-center gap-2"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/>
+                    <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>
+                  </svg>
+                  <span>Share Workspace</span>
+                </button>
+              </div>
+            )}
+            
+            {!isEditorPage && (
+              <Link
+                to="/editor"
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="bg-[#7C3AED] hover:bg-[#A855F7] text-white text-center text-sm font-semibold py-2.5 rounded-lg transition-colors mt-2"
+              >
+                Open Editor
+              </Link>
+            )}
           </motion.div>
         )}
       </AnimatePresence>

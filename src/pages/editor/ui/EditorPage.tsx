@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Header } from '@/widgets/header/ui/Header';
 import { CodeEditor } from '@/widgets/code-editor/ui/CodeEditor';
 import { ASTGraph } from '@/widgets/ast-graph/ui/ASTGraph';
@@ -9,6 +9,18 @@ export const EditorPage: React.FC = () => {
   const parseError = useWorkspaceStore((state) => state.parseError);
   const activeNodeId = useWorkspaceStore((state) => state.activeNodeId);
   const setCode = useWorkspaceStore((state) => state.setCode);
+
+  const [splitWidth, setSplitWidth] = useState(50); // percentage for left pane
+  const [isDesktop, setIsDesktop] = useState(window.innerWidth >= 768);
+
+  // Monitor desktop width
+  useEffect(() => {
+    const handleResize = () => {
+      setIsDesktop(window.innerWidth >= 768);
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   // Check URL hash for shared code on mount
   useEffect(() => {
@@ -26,14 +38,39 @@ export const EditorPage: React.FC = () => {
     }
   }, [setCode]);
 
+  // Handle pane resize dragging
+  const handleMouseDown = (e: React.MouseEvent) => {
+    e.preventDefault();
+    const startX = e.clientX;
+    const startWidth = splitWidth;
+
+    const handleMouseMove = (moveEvent: MouseEvent) => {
+      const deltaX = moveEvent.clientX - startX;
+      const deltaPercent = (deltaX / window.innerWidth) * 100;
+      const newWidth = Math.max(20, Math.min(80, startWidth + deltaPercent));
+      setSplitWidth(newWidth);
+    };
+
+    const handleMouseUp = () => {
+      document.removeEventListener('mousemove', handleMouseMove);
+      document.removeEventListener('mouseup', handleMouseUp);
+    };
+
+    document.addEventListener('mousemove', handleMouseMove);
+    document.addEventListener('mouseup', handleMouseUp);
+  };
+
   return (
     <div className="h-screen flex flex-col bg-[#0A0A12] text-[#F1F5F9] overflow-hidden select-none">
       <Header />
 
       {/* Main Workspace Split Pane */}
-      <div className="flex-1 flex flex-col md:flex-row divide-y md:divide-y-0 md:divide-x divide-[#2A2A45] h-[calc(100vh-56px-24px)] overflow-hidden">
+      <div className="flex-1 flex flex-col md:flex-row divide-y md:divide-y-0 divide-[#2A2A45] h-[calc(100vh-56px-24px)] overflow-hidden">
         {/* Left Pane: Code Editor */}
-        <div className="w-full md:w-1/2 h-1/2 md:h-full relative flex flex-col">
+        <div 
+          className="w-full md:w-auto h-1/2 md:h-full relative flex flex-col"
+          style={isDesktop ? { width: `${splitWidth}%` } : {}}
+        >
           <CodeEditor />
           {parseError && (
             <div className="absolute bottom-0 inset-x-0 bg-[#EF4444]/95 text-white text-xs px-4 py-2 border-t border-[#2A2A45] backdrop-blur-md flex items-center justify-between z-10">
@@ -45,8 +82,19 @@ export const EditorPage: React.FC = () => {
           )}
         </div>
 
+        {/* Resizable Divider */}
+        {isDesktop && (
+          <div
+            onMouseDown={handleMouseDown}
+            className="hidden md:block w-1.5 h-full cursor-col-resize bg-[#2A2A45] hover:bg-[#7C3AED] active:bg-[#7C3AED] transition-colors z-20 flex-shrink-0"
+          />
+        )}
+
         {/* Right Pane: AST Graph */}
-        <div className="w-full md:w-1/2 h-1/2 md:h-full relative">
+        <div 
+          className="w-full md:w-auto h-1/2 md:h-full relative"
+          style={isDesktop ? { width: `${100 - splitWidth}%` } : {}}
+        >
           <ASTGraph />
         </div>
       </div>
