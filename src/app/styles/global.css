@@ -179,11 +179,17 @@ body {
     height: 6rem;
     width: 20rem;
   }
-  .action:hover .action-content {
+  .action .action-content {
     left: 50% !important;
     top: auto !important;
-    bottom: calc(100% + 10px) !important;
+    bottom: calc(100% - 5px) !important;
     transform: translateX(-50%) !important;
+  }
+  .action:hover .action-content {
+    opacity: 1;
+    pointer-events: auto;
+    bottom: calc(100% + 10px) !important;
+    z-index: 9;
   }
 }
 
