@@ -105,24 +105,7 @@ export const Header: React.FC = () => {
     <header className="h-[56px] border-b border-[#2A2A45] bg-[#12121F] px-4 md:px-6 flex items-center justify-between z-30 relative select-none">
       {/* Left: Logo & Wordmark */}
       <Link to="/" className="flex items-center gap-3">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" className="w-8 h-8">
-          <defs>
-            <linearGradient id="navLineGrad" x1="50%" y1="20%" x2="30%" y2="70%">
-              <stop offset="0%" stop-color="#7C3AED" />
-              <stop offset="100%" stop-color="#06B6D4" />
-            </linearGradient>
-            <linearGradient id="navLineGradRight" x1="50%" y1="20%" x2="70%" y2="70%">
-              <stop offset="0%" stop-color="#7C3AED" />
-              <stop offset="100%" stop-color="#06B6D4" />
-            </linearGradient>
-          </defs>
-          <circle cx="50" cy="50" r="45" fill="#1C1C2E" stroke="#7C3AED" stroke-width="4" />
-          <line x1="50" y1="30" x2="30" y2="70" stroke="url(#navLineGrad)" stroke-width="5" />
-          <line x1="50" y1="30" x2="70" y2="70" stroke="url(#navLineGradRight)" stroke-width="5" />
-          <circle cx="50" cy="30" r="9" fill="#7C3AED" />
-          <circle cx="30" cy="70" r="9" fill="#06B6D4" />
-          <circle cx="70" cy="70" r="9" fill="#06B6D4" />
-        </svg>
+        <img src="/assets/nav-logo.svg" alt="SynapseAST Logo" className="w-8 h-8" />
         <span className="font-bold text-[18px] tracking-wide text-white">
           Synapse<span className="text-[#7C3AED]">AST</span>
         </span>

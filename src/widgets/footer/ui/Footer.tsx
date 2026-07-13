@@ -61,9 +61,12 @@ export const Footer: React.FC = () => {
     <footer className="border-t border-[#2A2A45] py-8 bg-[#0A0A12] relative z-10 select-none">
       <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6 text-sm text-[#94A3B8] mb-6">
         {/* Brand Metadata */}
-        <div className="flex flex-col items-center md:items-start gap-1">
-          <span className="text-xs text-[#94A3B8]">Built by Loganathan G P</span>
-          <span className="font-bold text-white tracking-wide">Logusivam Vision</span>
+        <div className="flex items-center gap-3">
+          <img src="/assets/footer-logo.svg" alt="Logusivam Vision Logo" className="w-8 h-8" />
+          <div className="flex flex-col items-start gap-0.5">
+            <span className="text-[11px] text-[#94A3B8]">Built by Loganathan G P</span>
+            <span className="font-bold text-white tracking-wide text-sm">Logusivam Vision</span>
+          </div>
         </div>
 
         {/* Links & Contact */}
