@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.1.0] - 2026-07-14
+
+### Added
+
+- High-resolution, multi-scale PNG image export capability for AST layouts with automatic branch expansion and high-contrast styling.
+- Installed `html-to-image` dependency.
+
 ## [1.0.0] - 2026-07-10
 
 ### Added
@@ -22,3 +29,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - FAQ accordion questions detailing ESTree standards and security considerations on LandingPage.
 - Open-source repo assets: CODEOWNERS, issue guidelines ymls, Vitest + Playwright setups, and pre-push hooks.
 - Static robots.txt, sitemap.xml, Vercel routing configs, and structured JSON-LD SEO optimizations.
+- Premium animated Preloader screen illustrating compiler bootstrapping phases.
+- Correct sizing placements for brand vector assets (nav-logo.svg, footer-logo.svg) and custom favicons.
