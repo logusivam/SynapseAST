@@ -41,6 +41,18 @@ body {
   color: var(--text-primary) !important;
 }
 
+.react-flow__edge-textbg {
+  fill: #ffffff !important;
+  rx: 4px;
+  ry: 4px;
+}
+
+.react-flow__edge-text {
+  fill: #0a0a12 !important;
+  font-weight: 600 !important;
+  font-size: 10px !important;
+}
+
 /* Scrollbar customizations */
 ::-webkit-scrollbar {
   width: 8px;

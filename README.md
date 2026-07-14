@@ -27,6 +27,18 @@ Abstract Syntax Trees (ASTs) are the foundational backbone of compiler design, s
 
 ---
 
+## 🎨 Key Features
+
+- **Bidirectional Node Synchronization:** Instantly map code tokens to graph nodes. Hovering in Monaco highlights the node, and selecting a node reveals its precise range boundaries in the editor.
+- **Branch Collapse & Expansion:** Effortlessly traverse large code blocks by collapsing nested scopes (like Class blocks or function closures) to focus on target nodes.
+- **Dynamic Syntax Filtering:** Filter out low-level syntax classes (e.g., `Identifier`, `Literal`) to eliminate clutter and inspect structural flow.
+- **High-Resolution PNG Export:** Download visual layout trees as high-density images with one-click full node expansion, perfect for documentation and architectural reviews.
+- **Client-Side Parsing:** Zero server latency. Fully compiled and processed on the client side using high-precision Babel parsing rules.
+- **Responsive Layout Handles:** Resizable code panes designed to adapt dynamically on mobile viewports and desktop resolutions.
+- **Premium Themes:** Sleek ambient neon glows, custom legend lists, and responsive preloader animations that align with developer dark modes.
+
+---
+
 ## 🚀 How It Solves It
 
 1. **Real-time Parsing:** Leverages lightning-fast, client-side parsers to transform JavaScript and TypeScript into AST representation instantly.
@@ -93,6 +105,7 @@ SynapseAST/
 │   └── setup.ts              # Unit test configuration setup
 ├── package.json              # App dependencies & run scripts
 ├── playwright.config.ts      # Playwright configurations
+├── release.md                # Release specifications and changelog roadmap
 ├── tailwind.config.js        # Style tokens
 ├── vite.config.ts            # Vite compile environment variables
 └── vitest.config.ts          # Vitest suite rules
@@ -186,16 +199,17 @@ npm run test:e2e
 
 ### `v1.1.0` (July 2026)
 
-- **Feature:** Added global animated Preloader screen showcasing real-time bootstrapping stages.
-- **Feature:** Replaced standard inline SVG icons with official brand vectors (`nav-logo.svg` and `footer-logo.svg`).
-- **Fix:** Improved Playwright test selector robustness using standard accessibility roles.
-- **Fix:** Resolved Vitest overlapping path inclusions for E2E tests.
+- **High-Quality Export:** Click-to-export visual trees as high-density PNG files with automatically expanded branches and high-contrast connection labels.
+- **Dependency Added:** Integrated the `html-to-image` npm library.
 
 ### `v1.0.0` (Initial Release)
 
-- Complete AST visualizer workspace integrating Monaco Editor and ReactFlow Canvas.
-- Bidirectional cursor-graph synchronisation support.
-- Light & Dark theme responsive styling.
+- **AST Visualizer Workspace:** Interactive visual tree layout combining Monaco Editor and ReactFlow Canvas.
+- **Bidirectional Highlights:** Bidirectional cursor-graph synchronisation support.
+- **Preloading Screen:** Global animated Preloader showing real-time parsing engine boot stages.
+- **Refined Branding Assets:** SVG brand vectors (`nav-logo.svg`, `footer-logo.svg`) and multi-size favicon tags.
+- **Testing & Tooling:** Integrated Vitest unit tests, Playwright E2E browser tests, ESLint config, and Husky pre-commit hooks.
+- **Responsive Layout:** Responsive layout splitting for desktop and mobile viewports.
 
 </details>
 

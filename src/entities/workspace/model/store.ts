@@ -35,6 +35,7 @@ export interface WorkspaceState {
   toggleFilterType: (type: string) => void;
   setFilterTypes: (types: string[]) => void;
   toggleCollapseNode: (id: string) => void;
+  setCollapsedNodeIds: (ids: string[]) => void;
 }
 
 const defaultCode = `// Welcome to SynapseAST!
@@ -46,7 +47,7 @@ function greet(user) {
   return message;
 }
 
-const userObj = { name: "Antigravity" };
+const userObj = { name: "SynapseAST" };
 greet(userObj);
 `;
 
@@ -83,4 +84,5 @@ export const useWorkspaceStore = create<WorkspaceState>((set) => ({
         ? state.collapsedNodeIds.filter((cid) => cid !== id)
         : [...state.collapsedNodeIds, id],
     })),
+  setCollapsedNodeIds: (collapsedNodeIds) => set({ collapsedNodeIds }),
 }));

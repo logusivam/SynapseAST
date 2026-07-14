@@ -113,6 +113,8 @@ export function buildGraph(
         label: edgeLabel,
         animated: true,
         style: { stroke: '#06B6D4', strokeWidth: 1.5 },
+        labelBgStyle: { fill: '#ffffff', fillOpacity: 1 },
+        labelStyle: { fill: '#0a0a12', fontWeight: 600, fontSize: 10 },
       });
     }
     currentVisibleParentId = nodeId;
