@@ -7,9 +7,13 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/github/actions/workflow/status/logusivam/SynapseAST/ci.yml?branch=main&style=flat-square&label=build" alt="CI Status" />
-  <img src="https://img.shields.io/github/actions/workflow/status/logusivam/SynapseAST/e2e.yml?branch=main&style=flat-square&label=e2e" alt="E2E Status" />
-  <img src="https://img.shields.io/github/license/logusivam/SynapseAST?style=flat-square" alt="License" />
+  <a href="https://github.com/logusivam/SynapseAST/actions/workflows/ci.yml">
+    <img src="https://github.com/logusivam/SynapseAST/actions/workflows/ci.yml/badge.svg" alt="CI Status" />
+  </a>
+  <a href="https://github.com/logusivam/SynapseAST/actions/workflows/e2e.yml">
+    <img src="https://github.com/logusivam/SynapseAST/actions/workflows/e2e.yml/badge.svg" alt="E2E Status" />
+  </a>
+  <img src="https://img.shields.io/badge/license-MIT-green?style=flat-square" alt="License" />
   <img src="https://img.shields.io/badge/Vercel-Deployed-blue?logo=vercel&style=flat-square" alt="Vercel Deployment" />
 </p>
 
